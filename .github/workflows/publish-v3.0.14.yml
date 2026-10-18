@@ -1,5 +1,5 @@
 name: Publicar IdleHub v3.0.14 (controlado)
-on:
+'on':
   workflow_dispatch:
     inputs:
       run_id:
