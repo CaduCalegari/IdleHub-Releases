@@ -1,38 +1,40 @@
-name: Publicar IdleHub v3.0.14 (controlado)
-'on':
+name: Publish IdleHub 3.0.14
+on:
   workflow_dispatch:
     inputs:
       run_id:
-        description: "ID do GitHub Actions aprovado no repositorio privado"
+        description: Approved private repository run ID
         required: true
-        default: "39165593368"
+        default: '39165593368'
+        type: string
       confirm:
-        description: "Digite PUBLICAR-v3.0.14 para liberar a versao"
+        description: Type PUBLICAR-v3.0.14
         required: true
+        type: string
 permissions:
   contents: write
 jobs:
   publish:
-    if: inputs.confirm == 'PUBLICAR-v3.0.14'
+    if: ${{ inputs.confirm == 'PUBLICAR-v3.0.14' }}
     runs-on: ubuntu-latest
     steps:
-      - name: Validar autorizacao do repositorio privado
+      - name: Verify approved build and source access
         env:
           SOURCE_TOKEN: ${{ secrets.IDLEHUB_SOURCE_READ_TOKEN }}
           GH_TOKEN: ${{ github.token }}
           RUN_ID: ${{ inputs.run_id }}
         run: |
           set -euo pipefail
-          test -n "$SOURCE_TOKEN" || { echo "Configure o secret IDLEHUB_SOURCE_READ_TOKEN com permissao Actions:read no repo IdleHub"; exit 1; }
+          test -n "$SOURCE_TOKEN" || { echo "Missing IDLEHUB_SOURCE_READ_TOKEN secret"; exit 1; }
           info=$(GH_TOKEN="$SOURCE_TOKEN" gh api "repos/CaduCalegari/IdleHub/actions/runs/$RUN_ID")
           test "$(jq -r .conclusion <<<"$info")" = "success"
           test "$(jq -r .head_branch <<<"$info")" = "release-candidate/v3.0.14-orbit-1810"
           test "$(jq -r .head_sha <<<"$info")" = "764156cfecad0f227a5e50714cbc53f5eddc6880"
-          if gh release view v3.0.14 >/dev/null 2>&1; then
-            echo "Release v3.0.14 ja existe; nao sobrescrever."
+          if gh release view v3.0.14 --repo CaduCalegari/IdleHub-Releases >/dev/null 2>&1; then
+            echo "Release already exists; refusing overwrite"
             exit 1
           fi
-      - name: Baixar somente o artefato homologado
+      - name: Download approved installer artifact
         env:
           GH_TOKEN: ${{ secrets.IDLEHUB_SOURCE_READ_TOKEN }}
           RUN_ID: ${{ inputs.run_id }}
@@ -40,45 +42,19 @@ jobs:
           set -euo pipefail
           mkdir -p package
           gh run download "$RUN_ID" -R CaduCalegari/IdleHub -n idlehub-windows-dev-nao-homologado -D package
-          ls -lah package
-      - name: Validar conteudo e metadados da atualizacao
+      - name: Verify installer files
         run: |
           set -euo pipefail
-          python3 - <<'PY'
-          from pathlib import Path
-          import re, hashlib
-          p=Path('package')
-          expected={'IdleHub-v3.0.14-Setup.exe','IdleHub-v3.0.14-Setup.exe.blockmap','latest.yml'}
-          found={x.name for x in p.iterdir() if x.is_file()}
-          if found != expected: raise SystemExit(f'Arquivos inesperados: {found ^ expected}')
-          data=(p/'latest.yml').read_text(encoding='utf-8')
-          if not re.search(r'(?m)^version:\s*3\.0\.14\s*
-          if 'IdleHub-v3.0.14-Setup.exe' not in data: raise SystemExit('Instalador ausente em latest.yml')
-          if (p/'IdleHub-v3.0.14-Setup.exe').stat().st_size < 1000000: raise SystemExit('Instalador pequeno demais')
-          print('Arquivos validados:', sorted(found))
-          PY
-      - name: Publicar no canal oficial
+          test "$(find package -maxdepth 1 -type f | wc -l)" -eq 3
+          test -s package/IdleHub-v3.0.14-Setup.exe
+          test -s package/IdleHub-v3.0.14-Setup.exe.blockmap
+          test -s package/latest.yml
+          grep -Fq 'version: 3.0.14' package/latest.yml
+          grep -Fq 'IdleHub-v3.0.14-Setup.exe' package/latest.yml
+          test "$(stat -c %s package/IdleHub-v3.0.14-Setup.exe)" -gt 1000000
+      - name: Publish official release
         env:
           GH_TOKEN: ${{ github.token }}
         run: |
           set -euo pipefail
-          gh release create v3.0.14 package/IdleHub-v3.0.14-Setup.exe package/IdleHub-v3.0.14-Setup.exe.blockmap package/latest.yml \
-            --repo CaduCalegari/IdleHub-Releases \
-            --title "IdleHub v3.0.14 - beta controlada" \
-            --notes "Atualizacao beta controlada da v3.0.14. Instalacao e persistencia de sessao simulada verificadas no Windows CI. Login Google real ainda requer verificacao no cliente." \
-            --latest
-,data): raise SystemExit('Versao latest.yml incorreta')
-          if 'IdleHub-v3.0.14-Setup.exe' not in data: raise SystemExit('Instalador ausente em latest.yml')
-          if (p/'IdleHub-v3.0.14-Setup.exe').stat().st_size < 1000000: raise SystemExit('Instalador pequeno demais')
-          print('Arquivos validados:', sorted(found))
-          PY
-      - name: Publicar no canal oficial
-        env:
-          GH_TOKEN: ${{ github.token }}
-        run: |
-          set -euo pipefail
-          gh release create v3.0.14 package/IdleHub-v3.0.14-Setup.exe package/IdleHub-v3.0.14-Setup.exe.blockmap package/latest.yml \
-            --repo CaduCalegari/IdleHub-Releases \
-            --title "IdleHub v3.0.14 - beta controlada" \
-            --notes "Atualizacao beta controlada da v3.0.14. Instalacao e persistencia de sessao simulada verificadas no Windows CI. Login Google real ainda requer verificacao no cliente." \
-            --latest
+          gh release create v3.0.14 package/IdleHub-v3.0.14-Setup.exe package/IdleHub-v3.0.14-Setup.exe.blockmap package/latest.yml --repo CaduCalegari/IdleHub-Releases --title "IdleHub v3.0.14 - beta controlada" --notes "Beta controlada: Windows CI passou. Confirmar login Google real apos atualizar." --latest
