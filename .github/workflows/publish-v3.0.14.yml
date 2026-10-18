@@ -45,16 +45,24 @@ jobs:
       - name: Verify installer files
         run: |
           set -euo pipefail
-          test "$(find package -maxdepth 1 -type f | wc -l)" -eq 3
-          test -s package/IdleHub-v3.0.14-Setup.exe
-          test -s package/IdleHub-v3.0.14-Setup.exe.blockmap
-          test -s package/latest.yml
-          grep -Fq 'version: 3.0.14' package/latest.yml
-          grep -Fq 'IdleHub-v3.0.14-Setup.exe' package/latest.yml
-          test "$(stat -c %s package/IdleHub-v3.0.14-Setup.exe)" -gt 1000000
+          echo "Downloaded artifact inventory:"
+          find package -type f -printf '%P (%s bytes)\\n'
+          mkdir -p release-files
+          for filename in IdleHub-v3.0.14-Setup.exe IdleHub-v3.0.14-Setup.exe.blockmap latest.yml; do
+            mapfile -d '' matches < <(find package -type f -name "$filename" -print0)
+            if [ "${#matches[@]}" -ne 1 ]; then
+              echo "Expected exactly one $filename; found ${#matches[@]}"
+              exit 1
+            fi
+            cp -- "${matches[0]}" "release-files/$filename"
+            test -s "release-files/$filename"
+          done
+          grep -Eq '^version: *3\\.0\\.14 *$' release-files/latest.yml
+          grep -Fq 'IdleHub-v3.0.14-Setup.exe' release-files/latest.yml
+          test "$(stat -c %s release-files/IdleHub-v3.0.14-Setup.exe)" -gt 1000000
       - name: Publish official release
         env:
           GH_TOKEN: ${{ github.token }}
         run: |
           set -euo pipefail
-          gh release create v3.0.14 package/IdleHub-v3.0.14-Setup.exe package/IdleHub-v3.0.14-Setup.exe.blockmap package/latest.yml --repo CaduCalegari/IdleHub-Releases --title "IdleHub v3.0.14 - beta controlada" --notes "Beta controlada: Windows CI passou. Confirmar login Google real apos atualizar." --latest
+          gh release create v3.0.14 release-files/IdleHub-v3.0.14-Setup.exe release-files/IdleHub-v3.0.14-Setup.exe.blockmap release-files/latest.yml --repo CaduCalegari/IdleHub-Releases --title "IdleHub v3.0.14 - beta controlada" --notes "Beta controlada: Windows CI passou. Confirmar login Google real apos atualizar." --latest
