@@ -52,7 +52,22 @@ jobs:
           found={x.name for x in p.iterdir() if x.is_file()}
           if found != expected: raise SystemExit(f'Arquivos inesperados: {found ^ expected}')
           data=(p/'latest.yml').read_text(encoding='utf-8')
-          if not re.search(r'(?m)^version:\\s*3\\.0\\.14\\s*$',data): raise SystemExit('Versao latest.yml incorreta')
+          if not re.search(r'(?m)^version:\s*3\.0\.14\s*
+          if 'IdleHub-v3.0.14-Setup.exe' not in data: raise SystemExit('Instalador ausente em latest.yml')
+          if (p/'IdleHub-v3.0.14-Setup.exe').stat().st_size < 1000000: raise SystemExit('Instalador pequeno demais')
+          print('Arquivos validados:', sorted(found))
+          PY
+      - name: Publicar no canal oficial
+        env:
+          GH_TOKEN: ${{ github.token }}
+        run: |
+          set -euo pipefail
+          gh release create v3.0.14 package/IdleHub-v3.0.14-Setup.exe package/IdleHub-v3.0.14-Setup.exe.blockmap package/latest.yml \
+            --repo CaduCalegari/IdleHub-Releases \
+            --title "IdleHub v3.0.14 - beta controlada" \
+            --notes "Atualizacao beta controlada da v3.0.14. Instalacao e persistencia de sessao simulada verificadas no Windows CI. Login Google real ainda requer verificacao no cliente." \
+            --latest
+,data): raise SystemExit('Versao latest.yml incorreta')
           if 'IdleHub-v3.0.14-Setup.exe' not in data: raise SystemExit('Instalador ausente em latest.yml')
           if (p/'IdleHub-v3.0.14-Setup.exe').stat().st_size < 1000000: raise SystemExit('Instalador pequeno demais')
           print('Arquivos validados:', sorted(found))
