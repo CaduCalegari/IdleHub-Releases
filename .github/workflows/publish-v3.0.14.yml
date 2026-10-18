@@ -46,7 +46,7 @@ jobs:
         run: |
           set -euo pipefail
           echo "Downloaded artifact inventory:"
-          find package -type f -printf '%P (%s bytes)\\n'
+          find package -type f -printf '%P (%s bytes)\n'
           mkdir -p release-files
           for filename in IdleHub-v3.0.14-Setup.exe IdleHub-v3.0.14-Setup.exe.blockmap latest.yml; do
             mapfile -d '' matches < <(find package -type f -name "$filename" -print0)
@@ -57,7 +57,7 @@ jobs:
             cp -- "${matches[0]}" "release-files/$filename"
             test -s "release-files/$filename"
           done
-          grep -Eq '^version: *3\\.0\\.14 *$' release-files/latest.yml
+          grep -Eq '^version: *3\.0\.14 *$' release-files/latest.yml
           grep -Fq 'IdleHub-v3.0.14-Setup.exe' release-files/latest.yml
           test "$(stat -c %s release-files/IdleHub-v3.0.14-Setup.exe)" -gt 1000000
       - name: Publish official release
