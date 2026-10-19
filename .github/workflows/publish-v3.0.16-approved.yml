@@ -1,0 +1,90 @@
+name: Publicar ORBIT 3.0.16 apos homologacao real (manual)
+on:
+  workflow_dispatch:
+    inputs:
+      confirm:
+        description: Digite PUBLICAR-v3.0.16 somente apos aprovar a homologacao real
+        required: true
+        type: string
+      long_test:
+        description: Digite HOMOLOGADO-60MIN se o teste prolongado passou
+        required: true
+        type: string
+permissions:
+  contents: write
+concurrency:
+  group: idlehub-publish-v3.0.16
+  cancel-in-progress: false
+jobs:
+  publish:
+    if: ${{ inputs.confirm == 'PUBLICAR-v3.0.16' && inputs.long_test == 'HOMOLOGADO-60MIN' }}
+    runs-on: windows-latest
+    timeout-minutes: 45
+    env:
+      CSC_IDENTITY_AUTO_DISCOVERY: 'false'
+      GH_TOKEN: ${{ github.token }}
+    steps:
+      - name: Obter revisao EXATA da candidata privada
+        uses: actions/checkout@v4
+        with:
+          repository: CaduCalegari/IdleHub
+          ref: 4fd5161f45750dc6c3e6e6d899124c5f2e5ddea0
+          token: ${{ secrets.IDLEHUB_SOURCE_READ_TOKEN }}
+          persist-credentials: false
+      - name: Verificar codigo pinado e versao
+        shell: pwsh
+        run: |
+          if ((git rev-parse HEAD).Trim() -ne '4fd5161f45750dc6c3e6e6d899124c5f2e5ddea0') { throw 'Commit diferente da versao aprovada.' }
+          node -e "const p=require('./package.json');const l=require('./package-lock.json');if(p.version!=='3.0.16'||l.version!==p.version||l.packages[''].version!==p.version||p.build.appId!=='br.com.idlehub.desktop'||p.build.publish[0].repo!=='IdleHub-Releases')process.exit(1)"
+          node -e "const fs=require('fs');const main=fs.readFileSync('main.js','utf8');if(!main.includes('const ORBIT_EXPERIMENT = false;'))process.exit(1)"
+      - name: Node 22
+        uses: actions/setup-node@v4
+        with:
+          node-version: '22'
+      - name: Instalar dependencias bloqueadas
+        shell: pwsh
+        run: npm ci --no-audit --no-fund
+      - name: Verificacoes de sintaxe e testes de logica
+        shell: pwsh
+        run: |
+          node --check main.js
+          node --check preload.js
+          node --check renderer.js
+          node --check guardian.js
+          node --check monitor-history.js
+          node --check metrics.js
+          npm test
+      - name: Smokes nativos Windows com perfis descartaveis
+        shell: pwsh
+        timeout-minutes: 12
+        run: |
+          Remove-Item Env:ELECTRON_RUN_AS_NODE -ErrorAction SilentlyContinue
+          foreach ($test in @('electron-popup-smoke.cjs','electron-launcher-smoke.cjs','electron-offline-simulator.cjs','electron-monitor-smoke.cjs','electron-orbit-preview-smoke.cjs','electron-upgrade-legacy-smoke.cjs')) {
+            & .\node_modules\.bin\electron.cmd (Join-Path 'smoke' $test)
+            if ($LASTEXITCODE -ne 0) { throw ('Smoke falhou: ' + $test) }
+          }
+          $env:IDLEHUB_COOKIE_TEST_ROOT = Join-Path $env:RUNNER_TEMP 'idlehub-cookie-persistence-fixture'
+          New-Item -ItemType Directory -Force -Path $env:IDLEHUB_COOKIE_TEST_ROOT | Out-Null
+          & .\node_modules\.bin\electron.cmd .\smoke\electron-cookie-persistence-smoke.cjs write
+          if ($LASTEXITCODE -ne 0) { throw 'Falha gravando cookie.' }
+          & .\node_modules\.bin\electron.cmd .\smoke\electron-cookie-persistence-smoke.cjs read
+          if ($LASTEXITCODE -ne 0) { throw 'Cookie nao persistiu.' }
+      - name: Compilar NSIS sem publicacao prematura
+        shell: pwsh
+        run: |
+          npm run dist:win -- --publish never
+          node scripts/check-release-package.js
+      - name: Validar anexos e impedir sobrescrever release
+        shell: pwsh
+        run: |
+          foreach ($file in @('dist/IdleHub-v3.0.16-Setup.exe','dist/IdleHub-v3.0.16-Setup.exe.blockmap','dist/latest.yml')) {
+            if (!(Test-Path $file) -or (Get-Item $file).Length -le 0) { throw ('Arquivo ausente/vazio: '+$file) }
+          }
+          gh release view v3.0.16 -R CaduCalegari/IdleHub-Releases *> $null
+          if ($LASTEXITCODE -eq 0) { throw 'Release v3.0.16 ja existe; nao sobrescrever.' }
+          $current=gh release view --repo CaduCalegari/IdleHub-Releases --json tagName --jq '.tagName'
+          if ($LASTEXITCODE -ne 0 -or $current.Trim() -ne 'v3.0.14') { throw 'Canal oficial mudou; revisao humana obrigatoria.' }
+      - name: Publicar versao oficial apenas apos aprovacoes e todos os testes
+        shell: pwsh
+        run: |
+          gh release create v3.0.16 dist/IdleHub-v3.0.16-Setup.exe dist/IdleHub-v3.0.16-Setup.exe.blockmap dist/latest.yml --repo CaduCalegari/IdleHub-Releases --title "ORBIT v3.0.16 - Session Guardian" --notes "Atualizacao homologada: Guardian observacional e layouts alternativos. Sem reinicios automaticos e sem mudanca de particoes de login." --latest
