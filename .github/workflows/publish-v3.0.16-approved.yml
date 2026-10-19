@@ -31,16 +31,16 @@ jobs:
           ref: 4fd5161f45750dc6c3e6e6d899124c5f2e5ddea0
           token: ${{ secrets.IDLEHUB_SOURCE_READ_TOKEN }}
           persist-credentials: false
+      - name: Node 22
+        uses: actions/setup-node@v4
+        with:
+          node-version: '22'
       - name: Verificar codigo pinado e versao
         shell: pwsh
         run: |
           if ((git rev-parse HEAD).Trim() -ne '4fd5161f45750dc6c3e6e6d899124c5f2e5ddea0') { throw 'Commit diferente da versao aprovada.' }
           node -e "const p=require('./package.json');const l=require('./package-lock.json');if(p.version!=='3.0.16'||l.version!==p.version||l.packages[''].version!==p.version||p.build.appId!=='br.com.idlehub.desktop'||p.build.publish[0].repo!=='IdleHub-Releases')process.exit(1)"
           node -e "const fs=require('fs');const main=fs.readFileSync('main.js','utf8');if(!main.includes('const ORBIT_EXPERIMENT = false;'))process.exit(1)"
-      - name: Node 22
-        uses: actions/setup-node@v4
-        with:
-          node-version: '22'
       - name: Instalar dependencias bloqueadas
         shell: pwsh
         run: npm ci --no-audit --no-fund
