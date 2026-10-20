@@ -1,13 +1,13 @@
-name: Publicar ORBIT 3.0.16 apos homologacao real (manual)
+name: Publicar ORBIT 3.0.16 com autorizacao explicita (manual)
 on:
   workflow_dispatch:
     inputs:
       confirm:
-        description: Digite PUBLICAR-v3.0.16 somente apos aprovar a homologacao real
+        description: Digite PUBLICAR-v3.0.16 para autorizar publicacao oficial
         required: true
         type: string
-      long_test:
-        description: Digite HOMOLOGADO-60MIN se o teste prolongado passou
+      release_mode:
+        description: Digite PUBLICAR-SEM-60MIN para autorizar publicacao sem teste prolongado
         required: true
         type: string
 permissions:
@@ -17,7 +17,7 @@ concurrency:
   cancel-in-progress: false
 jobs:
   publish:
-    if: ${{ inputs.confirm == 'PUBLICAR-v3.0.16' && inputs.long_test == 'HOMOLOGADO-60MIN' }}
+    if: ${{ inputs.confirm == 'PUBLICAR-v3.0.16' && inputs.release_mode == 'PUBLICAR-SEM-60MIN' }}
     runs-on: windows-latest
     timeout-minutes: 45
     env:
@@ -87,4 +87,4 @@ jobs:
       - name: Publicar versao oficial apenas apos aprovacoes e todos os testes
         shell: pwsh
         run: |
-          gh release create v3.0.16 dist/IdleHub-v3.0.16-Setup.exe dist/IdleHub-v3.0.16-Setup.exe.blockmap dist/latest.yml --repo CaduCalegari/IdleHub-Releases --title "ORBIT v3.0.16 - Session Guardian" --notes "Atualizacao homologada: Guardian observacional e layouts alternativos. Sem reinicios automaticos e sem mudanca de particoes de login." --latest
+          gh release create v3.0.16 dist/IdleHub-v3.0.16-Setup.exe dist/IdleHub-v3.0.16-Setup.exe.blockmap dist/latest.yml --repo CaduCalegari/IdleHub-Releases --title "ORBIT v3.0.16 - Session Guardian" --notes "Publicacao oficial autorizada sem teste prolongado de 60 minutos. Testes automatizados e smokes Windows executados neste workflow antes da publicacao. Guardian observacional e layouts alternativos. Sem reinicios automaticos e sem mudanca de particoes de login." --latest
