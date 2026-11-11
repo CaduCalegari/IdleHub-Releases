@@ -368,7 +368,19 @@ body[data-theme="gold"] footer{
   const login = document.getElementById('login-screen');
   const dash = document.getElementById('dashboard-screen');
   const showDashboard = () => { login.style.display='none'; dash.style.display='block';window.scrollTo({top:0,behavior:'instant'}); };
-  const showLogin = () => { dash.style.display='none'; login.style.display='grid';window.scrollTo({top:0,behavior:'instant'}); };
+  const showLogin = () => {
+    dash.style.display='none';
+    login.style.display='grid';
+    dash.dataset.gold='false';
+    document.body.dataset.theme='violet';
+    document.querySelector('meta[name="theme-color"]').setAttribute('content','#0a0910');
+    const toggle = document.getElementById('toggle-gold');
+    toggle.setAttribute('aria-pressed','false');
+    toggle.textContent='✦ Simular Founder Gold';
+    document.getElementById('overview-plan').classList.remove('gold-sample');
+    document.getElementById('subscription-plan').classList.remove('gold-sample');
+    window.scrollTo({top:0,behavior:'instant'});
+  };
   document.getElementById('enter-demo').addEventListener('click',showDashboard);
   document.getElementById('exit-demo').addEventListener('click',showLogin);
   const nav = [...document.querySelectorAll('[data-view]')];
