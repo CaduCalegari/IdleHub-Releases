@@ -105,10 +105,133 @@ h1{font-size:clamp(37px,4.5vw,59px);line-height:1.16;letter-spacing:-2.8px;font-
 footer{border-top:1px solid var(--line);text-align:center;padding:24px 16px;font-size:11px;color:#8a809e}
 @media(max-width:900px){.login-layout{gap:30px;grid-template-columns:1fr;min-height:0}.login-copy{text-align:center}.login-copy>p{margin-inline:auto}.highlights{max-width:430px;margin:30px auto 0}.login-card{max-width:480px;width:100%;margin:0 auto}.dashboard-layout{grid-template-columns:1fr}.side{display:flex;overflow:auto;align-items:center;gap:7px}.side-label,.side .subtle{display:none}.side button{width:auto;flex-shrink:0;white-space:nowrap;margin:0}.cols{grid-template-columns:1fr}}
 @media(max-width:600px){.top{padding:12px 16px}.top-link{display:none}.wrap{width:min(100% - 28px,1180px)}.login-layout{padding:48px 0}.login-card{padding:25px 22px}.dashboard-head{display:block;padding-top:30px}.demo-tools{margin-top:20px}.quick-actions{grid-template-columns:1fr}.quick-actions p{min-height:0}.panel{padding:20px}.info-row{align-items:flex-start}.founder{padding:0}.notice{font-size:10px}}
+
+/* Founder Gold - complete customer area theme (demo only). */
+body{transition:background-color .3s,color .3s,background .3s}
+body[data-theme="gold"]{
+  --bg:#100e0b;--panel:#1c1712;--panel2:#271e16;--white:#fff7e9;--text:#ddcfb7;
+  --muted:#b6a58c;--line:rgba(220,178,102,.24);--violet:#e7be77;
+  --violet2:#b78236;--green:#e8bf7d;--gold:#f1ca83;
+  background:
+    radial-gradient(ellipse 70% 37% at 78% 0,rgba(207,146,51,.19),transparent 72%),
+    radial-gradient(ellipse 42% 26% at 3% 70%,rgba(167,118,45,.07),transparent 80%),#100d0a;
+  color:var(--white);
+}
+body[data-theme="gold"] ::selection{background:#d2a35e;color:#1e160d}
+body[data-theme="gold"] button:focus-visible,body[data-theme="gold"] a:focus-visible{
+  outline-color:#f1d39c;
+}
+body[data-theme="gold"] .top{
+  background:rgba(17,13,9,.9);
+  border-bottom-color:rgba(216,168,86,.28);
+  box-shadow:0 7px 45px rgba(129,81,24,.1);
+}
+body[data-theme="gold"] .logo-ico{
+  color:#f7d99b;
+  background:linear-gradient(140deg,#49331a,#211910);
+  border-color:rgba(227,182,100,.45);
+  box-shadow:0 0 25px rgba(201,145,62,.18);
+}
+body[data-theme="gold"] .logo b span{color:#f0c780}
+body[data-theme="gold"] .logo small,body[data-theme="gold"] .top-link{color:#ccb896}
+body[data-theme="gold"] .preview-tag{
+  color:#f2d8a4;background:rgba(182,128,49,.15);border-color:rgba(233,191,114,.36);
+}
+body[data-theme="gold"] .notice{
+  color:#ebd3a6;background:rgba(122,87,38,.18);border-bottom-color:rgba(223,178,99,.21);
+}
+body[data-theme="gold"] .notice strong{color:#fff0cc}
+body[data-theme="gold"] .eyebrow{color:#f0c985}
+body[data-theme="gold"] .pulse{
+  background:#e6b85e;
+  box-shadow:0 0 0 5px rgba(224,176,91,.13),0 0 17px rgba(232,177,75,.4);
+}
+body[data-theme="gold"] .gradient{
+  background:linear-gradient(110deg,#fff1d1,#f2cc86 58%,#c98f4c);
+  -webkit-background-clip:text;background-clip:text;color:transparent;
+}
+body[data-theme="gold"] .dashboard-head p,body[data-theme="gold"] .muted{
+  color:#b8a78e;
+}
+body[data-theme="gold"] .side{
+  background:linear-gradient(165deg,rgba(38,29,19,.94),rgba(23,19,16,.96));
+  border-color:rgba(226,183,105,.24);
+}
+body[data-theme="gold"] .side-label{color:#c8ac7c}
+body[data-theme="gold"] .side button{color:#c6b390}
+body[data-theme="gold"] .side button.active{
+  background:linear-gradient(110deg,rgba(201,144,56,.24),rgba(141,98,40,.10));
+  color:#ffe5b3;
+  border-color:rgba(224,175,93,.42);
+  box-shadow:inset 0 1px 0 rgba(250,220,169,.12);
+}
+body[data-theme="gold"] .side button:not(.active):hover{
+  background:rgba(221,167,82,.09);color:#f5dbb1;
+}
+body[data-theme="gold"] .side .subtle{color:#ae9675}
+body[data-theme="gold"] .panel{
+  background:radial-gradient(circle at 100% 0,rgba(192,132,53,.085),transparent 52%),
+             linear-gradient(145deg,#251d15,#171411);
+  border-color:rgba(225,179,102,.24);
+  box-shadow:0 15px 45px rgba(11,7,3,.19);
+}
+body[data-theme="gold"] .panel h3{color:#f8e7c6}
+body[data-theme="gold"] .panel p{color:#c5b294}
+body[data-theme="gold"] .sample{
+  color:#efd09a;
+  background:rgba(187,126,48,.14);
+  border-color:rgba(227,181,103,.34);
+}
+body[data-theme="gold"] .metric{color:#f0cf92}
+body[data-theme="gold"] .info-row span:first-child{color:#bba482}
+body[data-theme="gold"] .info-row strong{color:#f3e1c0}
+body[data-theme="gold"] .status{
+  color:#f4d99f;background:rgba(208,155,70,.13);border-color:rgba(232,189,116,.31);
+}
+body[data-theme="gold"] .status i{
+  background:#f2c67a;box-shadow:0 0 9px rgba(239,186,105,.36);
+}
+body[data-theme="gold"] .btn-outline{
+  color:#f5deb1;
+  background:rgba(166,111,42,.11);
+  border-color:rgba(228,183,105,.39);
+}
+body[data-theme="gold"] .btn-outline:hover{background:rgba(205,150,63,.19)}
+body[data-theme="gold"] .btn-dim{
+  color:#ebd3a9;background:linear-gradient(145deg,#30261b,#241e18);
+  border-color:rgba(213,166,93,.28);
+}
+body[data-theme="gold"] .btn-dim:hover:not(:disabled){
+  border-color:rgba(234,188,111,.51);
+  box-shadow:0 8px 20px rgba(124,78,25,.12);
+}
+body[data-theme="gold"] .btn-primary{
+  background:linear-gradient(110deg,#f2d293,#bf8b3f);
+  color:#281b0d;box-shadow:0 10px 30px rgba(195,131,52,.23);
+}
+body[data-theme="gold"] .empty{
+  background:#17120f;border-color:rgba(214,173,106,.28);color:#bea988;
+}
+body[data-theme="gold"] .section-footer{color:#ae9878}
+body[data-theme="gold"] #gold-banner{
+  border-color:rgba(238,188,103,.5);
+  background:radial-gradient(circle at 80% 0,rgba(221,162,69,.18),transparent 60%),
+             linear-gradient(145deg,#312517,#1a1510);
+}
+body[data-theme="gold"] .gold-art{
+  background:linear-gradient(105deg,#2c2115,#16130f);
+  color:#ffe3aa;
+  border-color:rgba(233,190,111,.43);
+  text-shadow:0 0 20px rgba(244,191,98,.18);
+}
+body[data-theme="gold"] footer{
+  background:rgba(23,17,11,.48);color:#b6a183;border-top-color:rgba(225,181,107,.27);
+}
+
 @media(prefers-reduced-motion:reduce){html{scroll-behavior:auto}*,*::before,*::after{transition:none!important}}
 </style>
 </head>
-<body>
+<body data-theme="violet">
 <header class="top">
   <a class="logo" href="./index.html" aria-label="Voltar ao site do IdleHub ORBIT"><span class="logo-ico">◇</span><span><b>IdleHub <span>ORBIT</span></b><small>MINHA ÁREA</small></span></a>
   <div class="top-right"><span class="preview-tag">PRÉVIA DE DESIGN</span><a class="top-link" href="./index.html">← Voltar ao site</a></div>
@@ -259,6 +382,8 @@ footer{border-top:1px solid var(--line);text-align:center;padding:24px 16px;font
   document.getElementById('toggle-gold').addEventListener('click',()=>{
     const next = dash.dataset.gold!=='true';
     dash.dataset.gold=String(next);
+    document.body.dataset.theme = next ? 'gold' : 'violet';
+    document.querySelector('meta[name="theme-color"]').setAttribute('content', next ? '#100d0a' : '#0a0910');
     document.getElementById('toggle-gold').setAttribute('aria-pressed',String(next));
     document.getElementById('toggle-gold').textContent=next?'◇ Voltar ao exemplo Anual':'✦ Simular Founder Gold';
     document.getElementById('overview-plan').classList.toggle('gold-sample',next);
