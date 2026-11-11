@@ -29,9 +29,11 @@
     .nav-mobile a {font-family:"Plus Jakarta Sans",sans-serif;font-weight:600;}
     .brand-title b { color:#b9a0ff; }
     .brand-sub { margin-top:6px; font-size:9px; text-transform:uppercase; letter-spacing:2.65px; color:#8b83a8; font-weight:700; }
-    .desktop-links { display:flex; gap:28px; align-items:center; margin-left:auto; padding-right:15px; }
+    .desktop-links { display:flex; gap:17px; align-items:center; margin-left:auto; padding-right:10px; }
     .desktop-links a { font-size:13px; font-weight:600; letter-spacing:.1px; color:#c5c1d7; transition:color .2s; }
     .desktop-links a:hover,.desktop-links a:focus-visible { color:#fff; }
+    .desktop-links a.client-link { color:#e6d6ff;font-weight:800;border:1px solid rgba(172,137,255,.25);background:rgba(137,98,255,.07);border-radius:9px;padding:8px 11px; }
+    .desktop-links a.client-link:hover {background:rgba(137,98,255,.15);border-color:rgba(172,137,255,.48);}
     .btn { border:1px solid transparent; display:inline-flex; gap:10px; align-items:center; justify-content:center; white-space:nowrap; border-radius:11px; padding:14px 23px; font-weight:700; font-size:13px; letter-spacing:.05px; cursor:pointer; transition: transform .2s, background .2s, box-shadow .2s, border-color .2s; }
     .btn:hover { transform:translateY(-2px); }
     .btn:focus-visible, a:focus-visible, summary:focus-visible { outline:2px solid #bc9dff; outline-offset:3px; }
@@ -189,6 +191,7 @@
     footer nav a:hover {color:white;}
     .prototype-ribbon {display:flex;justify-content:center;align-items:center;gap:8px;padding:7px 10px;background:#241837;color:#cdb9f7;border-bottom:1px solid rgba(183,148,244,.22);font-size:11px;font-weight:600;letter-spacing:.15px;text-align:center;}
     .prototype-ribbon svg {flex-shrink:0;}
+    @media (min-width:701px) and (max-width:1150px) {.desktop-links{gap:10px}.desktop-links a{font-size:12px}.nav-cta{font-size:12px;padding:11px 12px}}
     @media (max-width:1000px) {
       .desktop-links {gap:17px;}
       .hero-grid {grid-template-columns:1fr;gap:42px;}
@@ -261,11 +264,11 @@
           <span class="brand-mark" aria-hidden="true"><svg viewBox="0 0 30 30" fill="none"><ellipse cx="15" cy="15" rx="11" ry="6.7" stroke="#b79aff" stroke-width="1.6" transform="rotate(-42 15 15)"/><ellipse cx="15" cy="15" rx="11" ry="6.7" stroke="#8470f5" stroke-width="1.25" transform="rotate(42 15 15)"/><circle cx="15" cy="15" r="2.7" fill="#e6d8ff"/></svg></span>
           <span><span class="brand-title">IdleHub <b>ORBIT</b></span><span class="brand-sub">Desktop experience</span></span>
         </a>
-        <nav class="desktop-links" aria-label="Navegação principal"><a href="#recursos">Recursos</a><a href="#interface">Interface</a><a href="#planos">Planos</a><a href="#instalacao">Como começar</a><a href="#faq">Perguntas frequentes</a></nav>
+        <nav class="desktop-links" aria-label="Navegação principal"><a href="#recursos">Recursos</a><a href="#interface">Interface</a><a href="#planos">Planos</a><a href="#instalacao">Como começar</a><a href="#faq">FAQ</a><a href="./minha-area.html" class="client-link" aria-label="Minha Área — demonstração">◈ Minha Área</a></nav>
         <a class="btn btn-primary nav-cta" href="https://github.com/CaduCalegari/IdleHub-Releases/releases/latest" target="_blank" rel="noopener noreferrer">Baixar para Windows <span aria-hidden="true">↗</span></a>
         <button class="nav-toggle" type="button" aria-label="Abrir menu" aria-expanded="false" aria-controls="nav-mobile"><svg width="23" height="23" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M4 7h16M4 12h16M4 17h16"/></svg></button>
       </div>
-      <nav id="nav-mobile" class="nav-mobile" aria-label="Navegação móvel"><a href="#recursos">Recursos</a><a href="#interface">Interface</a><a href="#planos">Planos</a><a href="#instalacao">Como começar</a><a href="#faq">Perguntas frequentes</a><a href="https://github.com/CaduCalegari/IdleHub-Releases/releases/latest" target="_blank" rel="noopener noreferrer">Baixar para Windows ↗</a></nav>
+      <nav id="nav-mobile" class="nav-mobile" aria-label="Navegação móvel"><a href="#recursos">Recursos</a><a href="#interface">Interface</a><a href="#planos">Planos</a><a href="#instalacao">Como começar</a><a href="#faq">Perguntas frequentes</a><a href="./minha-area.html">Minha Área · Prévia</a><a href="https://github.com/CaduCalegari/IdleHub-Releases/releases/latest" target="_blank" rel="noopener noreferrer">Baixar para Windows ↗</a></nav>
     </div>
   </header>
   <main>
@@ -423,7 +426,7 @@
       <div class="last-cta"><div><span class="section-label">COMECE PELO SEU ESPAÇO</span><h2>Mais organização.<br><span class="grad">Mais liberdade.</span></h2><p>Conheça o IdleHub ORBIT e organize suas sessões em uma central desktop feita para você.</p></div><a class="btn btn-primary" href="https://github.com/CaduCalegari/IdleHub-Releases/releases/latest" target="_blank" rel="noopener noreferrer">↓ &nbsp; Acessar download oficial</a></div>
     </section>
   </main>
-  <footer><div class="container footer-grid"><div><div class="brand-title">IdleHub <b style="color:#ab91ff">ORBIT</b></div><p>Seus espaços. Seus jogos. Seus logins.<br>Prévia pública de demonstração — site oficial ainda não lançado.</p></div><nav aria-label="Links do rodapé"><a href="#inicio">Voltar ao topo</a><a href="#recursos">Recursos</a><a href="#planos">Planos</a><a href="#faq">FAQ</a><a href="https://github.com/CaduCalegari/IdleHub-Releases/releases/latest" target="_blank" rel="noopener noreferrer">GitHub Releases ↗</a></nav></div></footer>
+  <footer><div class="container footer-grid"><div><div class="brand-title">IdleHub <b style="color:#ab91ff">ORBIT</b></div><p>Seus espaços. Seus jogos. Seus logins.<br>Prévia pública de demonstração — site oficial ainda não lançado.</p></div><nav aria-label="Links do rodapé"><a href="#inicio">Voltar ao topo</a><a href="#recursos">Recursos</a><a href="#planos">Planos</a><a href="#faq">FAQ</a><a href="./minha-area.html">Minha Área · Prévia</a><a href="https://github.com/CaduCalegari/IdleHub-Releases/releases/latest" target="_blank" rel="noopener noreferrer">GitHub Releases ↗</a></nav></div></footer>
   <script>
     (() => {
       const toggle = document.querySelector('.nav-toggle');
