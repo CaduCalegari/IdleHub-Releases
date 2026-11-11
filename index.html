@@ -224,6 +224,56 @@
     .gold-demo-foot b{color:#f0d29d}
     .gold-demo-label{color:#9c8b78;font-size:10px;text-align:center;margin-top:12px}
     .plan-note{font-size:12px;line-height:1.8;color:#928ca9;margin:18px 0 0}
+
+    /* Verified Windows laboratory results — synthetic load, not a universal RAM claim. */
+    .benchmark-section{background:radial-gradient(ellipse at 85% 20%,rgba(104,60,232,.11),transparent 58%),linear-gradient(170deg,#090910,#100d1b 50%,#0a0912)}
+    .benchmark-top{display:flex;align-items:end;justify-content:space-between;gap:22px;margin-bottom:32px}
+    .benchmark-top .heading{max-width:730px}
+    .benchmark-top .section-desc{margin-bottom:0}
+    .benchmark-proof{display:flex;align-items:center;gap:9px;padding:10px 14px;border-radius:9px;flex-shrink:0;background:rgba(51,119,80,.11);border:1px solid rgba(114,216,151,.30);font-size:10px;font-weight:800;color:#b3edca;letter-spacing:.5px}
+    .benchmark-proof i{width:7px;height:7px;display:block;border-radius:100%;background:#8ce5b7;box-shadow:0 0 13px #64bd88}
+    .benchmark-grid{display:grid;grid-template-columns:minmax(0,1.4fr) minmax(290px,.78fr);gap:17px;align-items:stretch}
+    .benchmark-chart{background:linear-gradient(150deg,#181429,#0e0d17);border:1px solid rgba(169,140,245,.24);border-radius:19px;padding:28px;box-shadow:0 25px 70px rgba(0,0,0,.18)}
+    .benchmark-chart-top{display:flex;align-items:baseline;justify-content:space-between;gap:10px;margin-bottom:26px}
+    .benchmark-chart-top strong{font-size:13px}
+    .benchmark-chart-top span{font-size:10px;color:#9c92b0}
+    .benchmark-bars{display:grid;gap:21px}
+    .benchmark-row{min-width:0}
+    .benchmark-row-heading{display:flex;align-items:baseline;justify-content:space-between;gap:12px;font-size:12px;margin-bottom:8px}
+    .benchmark-row-heading strong{font-weight:700;color:#e9e3f5}
+    .benchmark-row-heading span{color:#cec7dc;font:700 13px "Sora",sans-serif;font-variant-numeric:tabular-nums}
+    .benchmark-track{background:#2b253a;border:1px solid rgba(204,173,255,.07);height:14px;overflow:hidden;border-radius:99px}
+    .benchmark-fill{width:var(--fill);height:100%;display:block;border-radius:99px;background:linear-gradient(90deg,#63557e,#a28acb)}
+    .benchmark-row.orbit .benchmark-row-heading strong,.benchmark-row.orbit .benchmark-row-heading span{color:#c6aaff}
+    .benchmark-row.orbit .benchmark-track{background:#261f3d;border-color:rgba(177,139,255,.18)}
+    .benchmark-row.orbit .benchmark-fill{background:linear-gradient(90deg,#7450e0,#b99afc)}
+    .benchmark-chart-foot{display:flex;align-items:start;justify-content:space-between;gap:12px;border-top:1px solid rgba(191,165,243,.14);padding-top:15px;margin-top:24px;color:#a098b2;font-size:10px;line-height:1.7}
+    .benchmark-summary{position:relative;overflow:hidden;display:flex;flex-direction:column;padding:28px 27px;border:1px solid rgba(175,138,255,.39);border-radius:19px;background:radial-gradient(circle at 86% 0%,rgba(155,109,255,.22),transparent 60%),linear-gradient(160deg,#261b40,#151121)}
+    .benchmark-summary:after{content:"◇";position:absolute;pointer-events:none;right:-28px;top:-100px;font-size:260px;color:rgba(199,175,255,.07);line-height:1}
+    .benchmark-summary .kicker{font-size:10px;font-weight:800;letter-spacing:2px;color:#c5b1fc;text-transform:uppercase}
+    .benchmark-summary .number{font:800 clamp(56px,6vw,76px)/1.1 "Sora",sans-serif;letter-spacing:-4px;color:#fff;margin:18px 0 8px;font-variant-numeric:tabular-nums}
+    .benchmark-summary .number span{font-size:.54em;letter-spacing:-2px}
+    .benchmark-summary h3{margin:0 0 9px;font-size:17px;line-height:1.45}
+    .benchmark-summary p{margin:0 0 22px;color:#c5b9d8;font-size:12px;line-height:1.8}
+    .benchmark-deltas{display:grid;gap:11px;border-top:1px solid rgba(196,172,246,.17);padding:17px 0 21px}
+    .benchmark-deltas div{display:flex;align-items:center;justify-content:space-between;gap:8px;font-size:12px}
+    .benchmark-deltas span{color:#c4b7d6}
+    .benchmark-deltas b{font:700 14px "Sora",sans-serif;color:#e9dfff}
+    .benchmark-source{align-self:flex-start;margin-top:auto;color:#f0e8ff;font-size:12px;font-weight:800;text-decoration:underline;text-decoration-color:#9573c9;text-underline-offset:4px;position:relative}
+    .benchmark-source:hover{text-decoration-color:#eadfff}
+    .benchmark-method{padding:20px 23px;border:1px solid rgba(177,154,228,.19);border-radius:14px;background:#12101d;margin-top:17px}
+    .benchmark-method p{margin:0;font-size:12px;line-height:1.85;color:#aaa4bd}
+    .benchmark-method p strong{color:#ded5f0}
+    .benchmark-method details{border-top:1px solid rgba(186,160,244,.14);padding-top:13px;margin-top:15px}
+    .benchmark-method summary{display:inline-flex;align-items:center;cursor:pointer;font-size:12px;font-weight:800;color:#cdb9ff;list-style:none}
+    .benchmark-method summary::-webkit-details-marker{display:none}
+    .benchmark-method summary:after{content:"+";margin-left:9px;font-size:17px}
+    .benchmark-method details[open] summary:after{content:"−"}
+    .benchmark-method details p{margin-top:10px}
+    .benchmark-method a{color:#cdb8ff;text-decoration:underline;text-underline-offset:3px}
+    @media(max-width:980px){.benchmark-grid{grid-template-columns:1fr}.benchmark-top{flex-direction:column;align-items:flex-start}.benchmark-summary .number{font-size:62px}}
+    @media(max-width:700px){.benchmark-chart{padding:20px 16px}.benchmark-chart-top{align-items:flex-start;flex-direction:column;gap:4px}.benchmark-row-heading{font-size:11px}.benchmark-row-heading span{font-size:12px}.benchmark-chart-foot{flex-direction:column}.benchmark-summary{padding:25px 21px}.benchmark-summary .number{font-size:54px}.benchmark-method{padding:17px}}
+
     .steps {display:grid;grid-template-columns:repeat(3,1fr);gap:18px;margin-top:38px;}
     .step {padding:30px 27px;border-radius:17px;border:1px solid var(--line);background:linear-gradient(155deg,#171325,#0d0c16);position:relative;}
     .step .step-num {font-size:13px;color:#a88bfb;letter-spacing:1px;font-weight:800;}
@@ -323,11 +373,11 @@
           <span class="brand-mark" aria-hidden="true"><svg viewBox="0 0 30 30" fill="none"><ellipse cx="15" cy="15" rx="11" ry="6.7" stroke="#b79aff" stroke-width="1.6" transform="rotate(-42 15 15)"/><ellipse cx="15" cy="15" rx="11" ry="6.7" stroke="#8470f5" stroke-width="1.25" transform="rotate(42 15 15)"/><circle cx="15" cy="15" r="2.7" fill="#e6d8ff"/></svg></span>
           <span><span class="brand-title">IdleHub <b>ORBIT</b></span><span class="brand-sub">Desktop experience</span></span>
         </a>
-        <nav class="desktop-links" aria-label="Navegação principal"><a href="#recursos">Recursos</a><a href="#interface">Interface</a><a href="#planos">Planos</a><a href="#instalacao">Como começar</a><a href="#faq">FAQ</a><a href="./minha-area.html" class="client-link" aria-label="Minha Área — demonstração">◈ Minha Área</a></nav>
+        <nav class="desktop-links" aria-label="Navegação principal"><a href="#recursos">Recursos</a><a href="#interface">Interface</a><a href="#benchmark">Desempenho</a><a href="#planos">Planos</a><a href="#instalacao">Como começar</a><a href="#faq">FAQ</a><a href="./minha-area.html" class="client-link" aria-label="Minha Área — demonstração">◈ Minha Área</a></nav>
 
         <button class="nav-toggle" type="button" aria-label="Abrir menu" aria-expanded="false" aria-controls="nav-mobile"><svg width="23" height="23" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M4 7h16M4 12h16M4 17h16"/></svg></button>
       </div>
-      <nav id="nav-mobile" class="nav-mobile" aria-label="Navegação móvel"><a href="#recursos">Recursos</a><a href="#interface">Interface</a><a href="#planos">Planos</a><a href="#instalacao">Como começar</a><a href="#faq">Perguntas frequentes</a><a href="./minha-area.html">Minha Área · Prévia</a></nav>
+      <nav id="nav-mobile" class="nav-mobile" aria-label="Navegação móvel"><a href="#recursos">Recursos</a><a href="#interface">Interface</a><a href="#benchmark">Desempenho</a><a href="#planos">Planos</a><a href="#instalacao">Como começar</a><a href="#faq">Perguntas frequentes</a><a href="./minha-area.html">Minha Área · Prévia</a></nav>
     </div>
   </header>
   <main>
@@ -436,9 +486,67 @@
     </section>
 
 
+
+    <section class="section benchmark-section" id="benchmark" aria-labelledby="benchmark-title">
+      <div class="container">
+        <div class="benchmark-top">
+          <div class="heading">
+            <span class="section-label">04 / Benchmark · Windows</span>
+            <h2 id="benchmark-title">Quatro sessões.<br><span class="grad">Os números falam.</span></h2>
+            <p class="section-desc">Colocamos o ORBIT ao lado de Google Chrome, Brave e Opera GX em um laboratório automatizado. <strong>Na carga testada</strong>, o ORBIT registrou o menor valor de memória privada comprometida.</p>
+          </div>
+          <div class="benchmark-proof"><i aria-hidden="true"></i> TESTE REGISTRADO NO GITHUB</div>
+        </div>
+        <div class="benchmark-grid">
+          <div class="benchmark-chart" role="group" aria-label="Medições de memória privada comprometida para quatro sessões no Windows">
+            <div class="benchmark-chart-top"><strong>Memória por aplicativo</strong><span>Menor é melhor · MiB</span></div>
+            <div class="benchmark-bars">
+              <div class="benchmark-row">
+                <div class="benchmark-row-heading"><strong>Opera GX</strong><span>1.603,5 MiB</span></div>
+                <div class="benchmark-track"><span class="benchmark-fill" style="--fill:100%" aria-hidden="true"></span></div>
+              </div>
+              <div class="benchmark-row">
+                <div class="benchmark-row-heading"><strong>Google Chrome</strong><span>852,0 MiB</span></div>
+                <div class="benchmark-track"><span class="benchmark-fill" style="--fill:53.13%" aria-hidden="true"></span></div>
+              </div>
+              <div class="benchmark-row">
+                <div class="benchmark-row-heading"><strong>Brave</strong><span>674,4 MiB</span></div>
+                <div class="benchmark-track"><span class="benchmark-fill" style="--fill:42.06%" aria-hidden="true"></span></div>
+              </div>
+              <div class="benchmark-row orbit">
+                <div class="benchmark-row-heading"><strong>✦ IdleHub ORBIT v3.2.6</strong><span>274,4 MiB</span></div>
+                <div class="benchmark-track"><span class="benchmark-fill" style="--fill:17.11%" aria-hidden="true"></span></div>
+              </div>
+            </div>
+            <div class="benchmark-chart-foot">
+              <span>Windows · quatro sessões independentes por aplicativo</span>
+              <span>Mediana de cinco amostras · 11/11/2026</span>
+            </div>
+          </div>
+          <aside class="benchmark-summary">
+            <span class="kicker">Resultado do laboratório</span>
+            <strong class="number">82,9<span>%</span></strong>
+            <h3>menos memória privada que o Opera GX no experimento.</h3>
+            <p>O ORBIT também apresentou valores inferiores aos do Chrome e do Brave nas mesmas páginas sintéticas.</p>
+            <div class="benchmark-deltas">
+              <div><span>vs. Google Chrome</span><b>−67,8%</b></div>
+              <div><span>vs. Brave</span><b>−59,3%</b></div>
+            </div>
+            <a class="benchmark-source" href="https://github.com/CaduCalegari/IdleHub/actions/runs/43106921230" target="_blank" rel="noopener noreferrer">Consultar os testes públicos ↗</a>
+          </aside>
+        </div>
+        <div class="benchmark-method">
+          <p><strong>Como medimos:</strong> ambiente automatizado Windows, quatro páginas sintéticas idênticas com perfis independentes em cada cenário. Chrome, Brave e Opera GX foram executados em modo <em>headless</em>; ORBIT com interface Electron. A métrica é <strong>memória privada comprometida</strong> — não RAM física total. Estes resultados são preliminares e não garantem economia em jogos reais ou outros computadores.</p>
+          <details><summary>Ver metodologia e limitações</summary>
+            <p>O teste abriu quatro sessões por aplicativo com uma carga local fictícia de elementos e atualizações de interface. Foram coletadas cinco amostras de memória de processos no Windows, exibindo a mediana. As diferenças entre navegadores, o modo de execução e o tratamento de memória compartilhada limitam a comparação. Os dados não representam necessariamente o RagnaIdle em uso real, consumo de CPU ou desempenho geral. <a href="https://github.com/CaduCalegari/IdleHub/actions/runs/43106921230" target="_blank" rel="noopener noreferrer">Consulte os logs e artefatos originais no GitHub</a>.</p>
+          </details>
+        </div>
+      </div>
+    </section>
+
     <section class="section" id="planos" aria-labelledby="planos-titulo">
       <div class="container">
-        <span class="section-label">04 / Planos e licenças</span>
+        <span class="section-label">05 / Planos e licenças</span>
         <div class="heading"><h2 id="planos-titulo">Um plano para cada jornada.<br><span class="grad">Seu ritmo. Seu ORBIT.</span></h2><p class="section-desc">Acesso completo aos recursos principais em todos os períodos. Escolha a duração que combina com você. Valores em estudo para um lançamento futuro.</p></div>
         <div class="plan-grid">
           <article class="plan">
@@ -504,17 +612,18 @@
       </div>
     </section>
     <section class="section" id="instalacao">
-      <div class="container"><span class="section-label">05 / Primeiros passos</span><div class="heading"><h2>Sua conta. Seu acesso.<br><span class="grad">Seu ORBIT.</span></h2><p class="section-desc">Este é o fluxo planejado para quando as assinaturas e o acesso privado forem lançados.</p></div>
+      <div class="container"><span class="section-label">06 / Primeiros passos</span><div class="heading"><h2>Sua conta. Seu acesso.<br><span class="grad">Seu ORBIT.</span></h2><p class="section-desc">Este é o fluxo planejado para quando as assinaturas e o acesso privado forem lançados.</p></div>
         <div class="steps"><article class="step"><span class="step-num">01 / CONTA</span><h3>Crie seu acesso</h3><p>Quando o sistema estiver disponível, você poderá criar sua conta e fazer login na Minha Área.</p></article><article class="step"><span class="step-num">02 / ASSINATURA</span><h3>Escolha seu plano</h3><p>Contrate o período desejado e acompanhe a situação da licença em seu painel.</p></article><article class="step"><span class="step-num">03 / INSTALAÇÃO</span><h3>Instale pelo perfil</h3><p>Após a liberação da licença, o download autorizado e as orientações de instalação ficarão na Minha Área.</p></article></div>
       </div>
     </section>
     <section class="section" id="faq">
-      <div class="container"><div class="heading" style="text-align:center;margin-inline:auto;"><span class="section-label">06 / Dúvidas comuns</span><h2>Simples assim.</h2><p class="section-desc">O essencial para você conhecer o IdleHub antes de instalar.</p></div>
+      <div class="container"><div class="heading" style="text-align:center;margin-inline:auto;"><span class="section-label">07 / Dúvidas comuns</span><h2>Simples assim.</h2><p class="section-desc">O essencial para você conhecer o IdleHub antes de instalar.</p></div>
         <div class="faq">
           <details><summary>Em qual sistema o IdleHub funciona?</summary><p>A distribuição atual é destinada ao Windows, com instalador para computadores de 64 bits.</p></details>
           <details><summary>Quantas contas posso utilizar?</summary><p>O aplicativo permite configurar até quatro painéis por guia, com sessões de navegação independentes. A quantidade de contas permitida em cada jogo ou serviço depende das regras desse serviço.</p></details>
           <details><summary>Preciso entrar na conta toda vez?</summary><p>O IdleHub utiliza sessões persistentes para ajudar a manter logins. Alguns sites podem exigir autenticação novamente por suas próprias políticas ou por motivos de segurança.</p></details>
           <details><summary>Como recebo atualizações?</summary><p>O inicializador verifica a disponibilidade de novas versões. Quando necessário, o aplicativo orienta a atualização antes de iniciar.</p></details>
+          <details><summary>O ORBIT sempre utiliza menos RAM que Chrome, Brave e Opera GX?</summary><p>Não podemos garantir isso. No nosso benchmark sintético no Windows, o ORBIT registrou menos memória privada comprometida, com quatro sessões de teste por aplicativo. Os navegadores rodaram em modo headless e o ORBIT na interface Electron. Não é uma medição direta de RAM física total, nem representa todos os jogos ou computadores. <a href="#benchmark" style="color:#cbb7ff;text-decoration:underline;">Confira os dados e a metodologia.</a></p></details>
           <details><summary>O botão Otimizar RAM reduz o uso de memória?</summary><p>Ele limpa o cache HTTP descartável do painel, sem apagar cookies ou logins. Isso não garante redução imediata do consumo de memória.</p></details>
           <details><summary>Os planos já estão disponíveis para compra?</summary><p>Ainda não. Os cinco planos e a edição Founder Gold são propostas em planejamento. Não aceitamos pagamentos nem reservas de vagas pelo site neste momento.</p></details>
           <details><summary>Como funcionará a Founder Gold?</summary><p>A proposta é conceder acesso vitalício ao IdleHub ORBIT, um tema dourado exclusivo e um selo de fundador aos 10 primeiros clientes que comprarem o plano anual quando as vendas forem oficialmente abertas. As regras completas serão publicadas antes do lançamento.</p></details>
@@ -526,7 +635,7 @@
       <div class="last-cta"><div><span class="section-label">SEU ESPAÇO ORBIT</span><h2>Uma central para<br><span class="grad">sua experiência.</span></h2><p>Conheça a prévia da Minha Área: assinaturas, licenças e futuros downloads em um só lugar. O acesso real ainda está em desenvolvimento.</p></div><a class="btn btn-primary" href="./minha-area.html">◈ &nbsp; Explorar Minha Área</a></div>
     </section>
   </main>
-  <footer><div class="container footer-grid"><div><div class="brand-title">IdleHub <b style="color:#ab91ff">ORBIT</b></div><p>Seus espaços. Seus jogos. Seus logins.<br>Prévia pública de demonstração — site oficial ainda não lançado.</p></div><nav aria-label="Links do rodapé"><a href="#inicio">Voltar ao topo</a><a href="#recursos">Recursos</a><a href="#planos">Planos</a><a href="#faq">FAQ</a><a href="./minha-area.html">Minha Área · Prévia</a></nav></div></footer>
+  <footer><div class="container footer-grid"><div><div class="brand-title">IdleHub <b style="color:#ab91ff">ORBIT</b></div><p>Seus espaços. Seus jogos. Seus logins.<br>Prévia pública de demonstração — site oficial ainda não lançado.</p></div><nav aria-label="Links do rodapé"><a href="#inicio">Voltar ao topo</a><a href="#recursos">Recursos</a><a href="#benchmark">Benchmark</a><a href="#planos">Planos</a><a href="#faq">FAQ</a><a href="./minha-area.html">Minha Área · Prévia</a></nav></div></footer>
   <script>
     (() => {
       const toggle = document.querySelector('.nav-toggle');
