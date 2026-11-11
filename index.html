@@ -92,6 +92,64 @@
     .app-bottombar { padding:7px 14px 12px; display:flex;justify-content:space-between; gap:8px; font-size:8px; color:#706a87; }
     .app-bottombar .val {color:#ad92ed;}
     .mock-caption { margin-top:14px;text-align:center; color:#807991; font-size:10px; letter-spacing:.3px; }
+
+    /* Three-slide hero showcase; illustrative UI, not product screenshots. */
+    .hero-carousel{width:100%;position:relative}
+    .hero-carousel:focus-visible{outline:2px solid #c7abff;outline-offset:7px;border-radius:15px}
+    .showcase-track{display:grid;align-items:center}
+    .showcase-slide{grid-area:1/1;visibility:hidden;opacity:0;pointer-events:none;min-width:0;transform:translateX(14px) scale(.99);transition:opacity .36s,transform .36s,visibility .36s}
+    .showcase-slide.is-active{visibility:visible;opacity:1;pointer-events:auto;transform:none}
+    .showcase-slide .app-window{min-height:510px}
+    .showcase-controls{margin-top:18px;display:flex;align-items:center;justify-content:space-between;gap:12px}
+    .showcase-description{min-width:0}
+    .showcase-description strong{display:block;color:#e3d6ff;font-size:12px}
+    .showcase-description span{display:block;font-size:10px;color:#9588a9;margin-top:3px;line-height:1.6}
+    .showcase-nav{display:flex;align-items:center;gap:8px;flex-shrink:0}
+    .showcase-arrow{width:34px;height:34px;border-radius:9px;border:1px solid rgba(191,161,255,.31);background:rgba(146,108,234,.11);color:#e0ceff;font-size:20px;display:grid;place-items:center;cursor:pointer}
+    .showcase-arrow:hover{background:rgba(146,108,234,.23)}
+    .showcase-dots{display:flex;gap:7px}
+    .showcase-dot{border:0;padding:0;cursor:pointer;width:8px;height:8px;border-radius:12px;background:#635678;transition:width .22s,background .22s}
+    .showcase-dot[aria-selected="true"]{width:22px;background:#b69bff}
+    .showcase-arrow:focus-visible,.showcase-dot:focus-visible{outline:2px solid #dac4ff;outline-offset:3px}
+    .diag-preview .app-nav{justify-content:flex-start}
+    .diag-body{padding:14px}
+    .diag-header{display:flex;align-items:center;justify-content:space-between;gap:7px;margin-bottom:15px;font-size:12px;font-weight:800}
+    .diag-header small{font-size:9px;color:#bcace0;border:1px solid #5a4776;background:#2b213c;border-radius:99px;padding:5px 8px}
+    .diag-tiles{display:grid;grid-template-columns:1fr 1fr;gap:9px;margin-bottom:13px}
+    .diag-tile{padding:13px;border-radius:9px;background:#191525;border:1px solid #352a45}
+    .diag-tile small{display:block;font-size:9px;color:#a99ec0}
+    .diag-tile strong{display:block;font:700 18px "Sora",sans-serif;color:#ece2ff;margin:6px 0}
+    .diag-tile em{font-size:9px;font-style:normal;color:#897e9e}
+    .diag-panel{padding:12px;background:#171320;border:1px solid #342941;border-radius:9px;margin-top:9px}
+    .diag-panel-label{display:flex;justify-content:space-between;font-size:10px;color:#c9bcdf}
+    .diag-panel-label small{font-size:9px;color:#8b7d9c}
+    .diag-bars{height:66px;display:flex;align-items:flex-end;gap:5px;margin-top:10px}
+    .diag-bars i{height:var(--h);flex:1;display:block;background:linear-gradient(0deg,#47306c,#b490f9);border-radius:4px 4px 0 0}
+    .diag-panel.cpu .diag-bars i{background:linear-gradient(0deg,#31516e,#83c1ea)}
+    .diag-bottom{padding:10px 14px;font-size:9px;color:#83778f;border-top:1px solid #2d2538}
+    .gold-window{border-color:rgba(232,190,107,.48)!important;background:#13110e!important;box-shadow:0 28px 85px rgba(42,23,4,.43),0 0 36px rgba(190,131,43,.13)!important}
+    .gold-window .app-head{background:linear-gradient(90deg,#342817,#1d1812);border-color:#574025}
+    .gold-window .app-icon{background:#5c4123;color:#f7d496}
+    .gold-window .app-name span{color:#edc581}
+    .gold-window .app-nav{background:#211b14;border-color:#4c3923}
+    .gold-window .app-tab.active{background:#4c3720;border-color:#87663c;color:#ffe5b6}
+    .gold-window .app-status{color:#d6b783}
+    .gold-window .app-status i,.gold-window .app-panelhead i{background:#f0c579}
+    .gold-window .app-boardbar{color:#f0dcbc}
+    .gold-window .app-panel{background:#241b15;border-color:#584229}
+    .gold-window .app-panelhead{background:#30251a;border-color:#55402b;color:#f0d7a9}
+    .gold-window .app-url{background:#15110e;border-color:#4a3625;color:#a78d68}
+    .gold-window .game-screen,.gold-window .game-screen.g2,.gold-window .game-screen.g3,.gold-window .game-screen.g4{background:radial-gradient(circle at 50% 31%,rgba(168,119,56,.30),transparent 60%),linear-gradient(160deg,#332618,#18130f);border-color:rgba(229,178,89,.16)}
+    .gold-window .game-screen::before{border-color:rgba(230,184,101,.20)}
+    .gold-window .game-screen .rune{color:#edc47b}
+    .gold-window .game-screen .g-name{color:#f2d9a8}
+    .gold-window .game-screen .g-sub{color:#ab906b}
+    .gold-window .app-bottombar{color:#b49a75}
+    .gold-window .app-bottombar .val{color:#f3d597}
+    @media(max-width:1000px){.showcase-slide .app-window{transform:none}}
+    @media(max-width:700px){.showcase-slide .app-window{min-height:0}.showcase-controls{align-items:flex-start}.showcase-description{max-width:55%}.showcase-description strong{font-size:11px}.showcase-description span{font-size:9px}.showcase-arrow{width:30px;height:30px}.diag-body{padding:9px}.diag-tile{padding:9px}.diag-tile strong{font-size:14px}.diag-bars{height:42px}.diag-panel{padding:8px}}
+    @media(prefers-reduced-motion:reduce){.showcase-slide,.showcase-dot{transition:none!important}}
+
     section.section { padding:100px 0; border-top:1px solid rgba(182,158,250,.07); }
     .section-label { color:#a995ff;font-size:11px;font-weight:800;letter-spacing:2.6px;text-transform:uppercase; display:block; margin-bottom:15px; }
     .heading { max-width:700px; }
@@ -281,8 +339,11 @@
           <div class="hero-actions"><a class="btn btn-primary" href="#planos">Conhecer os planos <span aria-hidden="true">→</span></a><a class="btn btn-secondary" href="./minha-area.html">Explorar Minha Área <span aria-hidden="true">↗</span></a></div>
           <div class="fine"><span><i class="dot"></i> Aplicativo Windows</span><span><i class="dot"></i> Sessões independentes</span><span><i class="dot"></i> Atualizador integrado</span></div>
         </div>
+
         <div class="hero-app">
-          <div class="app-window" role="img" aria-label="Ilustração conceitual da interface do IdleHub ORBIT com quatro painéis independentes">
+          <div class="hero-carousel" id="hero-showcase" role="region" aria-roledescription="carrossel" aria-label="Prévia de recursos do IdleHub" tabindex="0">
+            <div class="showcase-track">
+              <div class="showcase-slide is-active" id="hero-slide-1" role="group" aria-roledescription="slide" aria-label="1 de 3: Quatro painéis"><div class="app-window" role="img" aria-label="Ilustração conceitual da interface do IdleHub ORBIT com quatro painéis independentes">
             <div class="app-head"><span class="app-icon">◇</span><span class="app-name">IdleHub <span>ORBIT</span></span><span class="app-winctrl">— □ ×</span></div>
             <div class="app-nav"><div class="app-tabs"><span class="app-tab active">◈ &nbsp; Principal</span><span class="app-tab">＋ Nova guia</span></div><span class="app-status"><i></i> Sessões organizadas</span></div>
             <div class="app-boardbar"><span>Workspace / Principal</span><span>01 &nbsp; 02 &nbsp; 03 &nbsp; <b style="color:#d5baff">04</b></span></div>
@@ -293,8 +354,46 @@
               <div class="app-panel"><div class="app-panelhead"><span>Conta 4</span><i></i></div><div class="app-url">idle-games.example/play</div><div class="game-screen g4"><span class="rune">✧</span><span class="g-name">IDLE GAMES</span><span class="g-sub">Sessão 04</span></div></div>
             </div>
             <div class="app-bottombar"><span>ORBIT · Prévia ilustrativa</span><span><span class="val">4</span> painéis configurados</span></div>
+          </div></div>
+              <div class="showcase-slide" id="hero-slide-2" role="group" aria-roledescription="slide" aria-label="2 de 3: Diagnóstico" aria-hidden="true" inert>
+<div class="app-window diag-preview" role="img" aria-label="Painel de diagnóstico ilustrativo, sem medições reais">
+  <div class="app-head"><span class="app-icon">◇</span><span class="app-name">IdleHub <span>ORBIT</span></span><span class="app-winctrl">— □ ×</span></div>
+  <div class="app-nav"><div class="app-tabs"><span class="app-tab active">◈ &nbsp; Diagnóstico</span><span class="app-tab">Histórico</span></div></div>
+  <div class="diag-body">
+    <div class="diag-header"><strong>Diagnóstico por painel</strong><small>● Prévia visual</small></div>
+    <div class="diag-tiles"><div class="diag-tile"><small>Memória</small><strong>Por painel</strong><em>Visibilidade local</em></div><div class="diag-tile"><small>Histórico</small><strong>24 horas</strong><em>Informações ilustrativas</em></div></div>
+    <div class="diag-panel"><div class="diag-panel-label"><span>Memória · amostra visual</span><small>Histórico</small></div><div class="diag-bars" aria-hidden="true"><i style="--h:40%"></i><i style="--h:56%"></i><i style="--h:49%"></i><i style="--h:64%"></i><i style="--h:54%"></i><i style="--h:71%"></i><i style="--h:62%"></i><i style="--h:76%"></i><i style="--h:58%"></i><i style="--h:69%"></i><i style="--h:53%"></i><i style="--h:67%"></i><i style="--h:59%"></i><i style="--h:73%"></i></div></div>
+    <div class="diag-panel cpu"><div class="diag-panel-label"><span>CPU · amostra visual</span><small>Histórico</small></div><div class="diag-bars" aria-hidden="true"><i style="--h:29%"></i><i style="--h:43%"></i><i style="--h:34%"></i><i style="--h:56%"></i><i style="--h:32%"></i><i style="--h:52%"></i><i style="--h:44%"></i><i style="--h:68%"></i><i style="--h:39%"></i><i style="--h:57%"></i><i style="--h:47%"></i><i style="--h:62%"></i><i style="--h:40%"></i><i style="--h:54%"></i></div></div>
+  </div>
+  <div class="diag-bottom">Gráficos fictícios · Não representam valores reais</div>
+</div></div>
+              <div class="showcase-slide" id="hero-slide-3" role="group" aria-roledescription="slide" aria-label="3 de 3: Founder Gold" aria-hidden="true" inert><div class="app-window gold-window" role="img" aria-label="Ilustração conceitual de quatro painéis na edição Founder Gold">
+            <div class="app-head"><span class="app-icon">◇</span><span class="app-name">IdleHub <span>ORBIT</span></span><span class="app-winctrl">— □ ×</span></div>
+            <div class="app-nav"><div class="app-tabs"><span class="app-tab active">◈ &nbsp; Principal</span><span class="app-tab">＋ Nova guia</span></div><span class="app-status"><i></i> Founder Gold · Visual ilustrativo</span></div>
+            <div class="app-boardbar"><span>Workspace / Principal</span><span>01 &nbsp; 02 &nbsp; 03 &nbsp; <b style="color:#f0cb86">04</b></span></div>
+            <div class="app-panels">
+              <div class="app-panel"><div class="app-panelhead"><span>Conta 1</span><i></i></div><div class="app-url">idle-games.example/play</div><div class="game-screen"><span class="rune">◇</span><span class="g-name">IDLE GAMES</span><span class="g-sub">Sessão 01</span></div></div>
+              <div class="app-panel"><div class="app-panelhead"><span>Conta 2</span><i></i></div><div class="app-url">idle-games.example/play</div><div class="game-screen g2"><span class="rune">✧</span><span class="g-name">IDLE GAMES</span><span class="g-sub">Sessão 02</span></div></div>
+              <div class="app-panel"><div class="app-panelhead"><span>Conta 3</span><i></i></div><div class="app-url">idle-games.example/play</div><div class="game-screen g3"><span class="rune">◇</span><span class="g-name">IDLE GAMES</span><span class="g-sub">Sessão 03</span></div></div>
+              <div class="app-panel"><div class="app-panelhead"><span>Conta 4</span><i></i></div><div class="app-url">idle-games.example/play</div><div class="game-screen g4"><span class="rune">✧</span><span class="g-name">IDLE GAMES</span><span class="g-sub">Sessão 04</span></div></div>
+            </div>
+            <div class="app-bottombar"><span>FOUNDER GOLD · Prévia ilustrativa</span><span><span class="val">4</span> painéis configurados</span></div>
+          </div></div>
+            </div>
+            <div class="showcase-controls">
+              <div class="showcase-description" id="showcase-description" aria-live="off"><strong>Seus quatro painéis, em um só lugar.</strong><span>Organize sessões independentes com praticidade.</span></div>
+              <div class="showcase-nav">
+                <button class="showcase-arrow" type="button" id="showcase-prev" aria-label="Slide anterior">‹</button>
+                <div class="showcase-dots" role="tablist" aria-label="Escolha uma prévia">
+                  <button class="showcase-dot" type="button" role="tab" aria-controls="hero-slide-1" aria-label="Painéis" aria-selected="true" tabindex="0"></button>
+                  <button class="showcase-dot" type="button" role="tab" aria-controls="hero-slide-2" aria-label="Diagnóstico" aria-selected="false" tabindex="-1"></button>
+                  <button class="showcase-dot" type="button" role="tab" aria-controls="hero-slide-3" aria-label="Founder Gold" aria-selected="false" tabindex="-1"></button>
+                </div>
+                <button class="showcase-arrow" type="button" id="showcase-next" aria-label="Próximo slide">›</button>
+              </div>
+            </div>
           </div>
-          <p class="mock-caption">Representação conceitual · Substituir por captura real antes de publicar</p>
+          <p class="mock-caption">Prévias conceituais · Não são capturas reais do aplicativo</p>
         </div>
       </div>
     </section>
@@ -441,6 +540,66 @@
         toggle.setAttribute('aria-expanded', 'false');
         toggle.setAttribute('aria-label', 'Abrir menu');
       }));
+
+      // Manual controls, swipe, and gentle autoplay (disabled for reduced motion).
+      const carousel = document.getElementById('hero-showcase');
+      if (carousel) {
+        const slides = Array.from(carousel.querySelectorAll('.showcase-slide'));
+        const dots = Array.from(carousel.querySelectorAll('.showcase-dot'));
+        const description = document.getElementById('showcase-description');
+        const labels = [
+          ['Seus quatro painéis, em um só lugar.', 'Organize sessões independentes com praticidade.'],
+          ['Entenda seu desempenho.', 'Diagnóstico de CPU e RAM em uma prévia ilustrativa.'],
+          ['Um visual para fundadores.', 'Founder Gold: conceito do tema dourado exclusivo.']
+        ];
+        let index = 0, paused = false, manual = false, touchX = null;
+        const reduced = window.matchMedia('(prefers-reduced-motion: reduce)');
+        const activate = (i, user = false) => {
+          index = (i + slides.length) % slides.length;
+          if (user) { manual = true; description.setAttribute('aria-live','polite'); }
+          slides.forEach((slide, j) => {
+            const on = j === index;
+            slide.classList.toggle('is-active', on);
+            slide.setAttribute('aria-hidden', String(!on));
+            slide.inert = !on;
+          });
+          dots.forEach((dot, j) => {
+            dot.setAttribute('aria-selected', String(j === index));
+            dot.tabIndex = j === index ? 0 : -1;
+          });
+          description.querySelector('strong').textContent = labels[index][0];
+          description.querySelector('span').textContent = labels[index][1];
+        };
+        document.getElementById('showcase-prev').addEventListener('click', () => activate(index - 1, true));
+        document.getElementById('showcase-next').addEventListener('click', () => activate(index + 1, true));
+        dots.forEach((dot, j) => dot.addEventListener('click', () => activate(j, true)));
+        carousel.addEventListener('keydown', e => {
+          if (e.key === 'ArrowLeft' || e.key === 'ArrowRight') {
+            e.preventDefault();
+            activate(index + (e.key === 'ArrowRight' ? 1 : -1), true);
+            if (e.target.classList.contains('showcase-dot')) dots[index].focus();
+          }
+        });
+        carousel.addEventListener('mouseenter', () => { paused = true; });
+        carousel.addEventListener('mouseleave', () => { paused = false; });
+        carousel.addEventListener('focusin', () => { paused = true; });
+        carousel.addEventListener('focusout', e => {
+          if (!carousel.contains(e.relatedTarget)) paused = false;
+        });
+        carousel.addEventListener('touchstart', e => {
+          if (e.touches.length === 1) touchX = e.touches[0].clientX;
+        }, { passive: true });
+        carousel.addEventListener('touchend', e => {
+          if (touchX === null || e.changedTouches.length !== 1) return;
+          const delta = e.changedTouches[0].clientX - touchX;
+          touchX = null;
+          if (Math.abs(delta) > 45) activate(index + (delta < 0 ? 1 : -1), true);
+        }, { passive: true });
+        window.setInterval(() => {
+          if (!manual && !paused && !document.hidden && !reduced.matches) activate(index + 1);
+        }, 7000);
+        activate(0);
+      }
     })();
   </script>
 </body>
