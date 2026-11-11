@@ -7,10 +7,11 @@
   <meta name="description" content="IdleHub ORBIT: múltiplas sessões, uma central de controle. Conheça o aplicativo desktop para organizar painéis independentes.">
   <title>IdleHub ORBIT — Seus espaços. Seus jogos. Seus logins.</title>
   <style>
+    @import url("https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&family=Sora:wght@600;700;800&display=swap");
     :root { color-scheme: dark; --bg: #08080e; --bg2: #0d0d17; --panel: #12111e; --panel2: #181526; --line: rgba(180,163,243,.15); --ink:#f8f7ff; --text:#c6c3d7; --muted:#8b879f; --violet:#956aff; --violet2:#6b50ee; --cyan:#83c8f1; --mint:#8fe5bf; --shadow: 0 40px 110px rgba(3,2,11,.64); }
     * { box-sizing: border-box; }
     html { scroll-behavior: smooth; scroll-padding-top: 90px; }
-    body { margin:0; background:var(--bg); color:var(--ink); font: 16px/1.6 "Inter", "Segoe UI", Arial, sans-serif; overflow-x:hidden; }
+    body { margin:0; background:var(--bg); color:var(--ink); font: 16px/1.6 "Plus Jakarta Sans", "Segoe UI", Arial, sans-serif; overflow-x:hidden; }
     body::before { content:""; position:absolute; pointer-events:none; width:92vw; height:850px; top:-380px; left:7%; background:radial-gradient(ellipse,rgba(94,53,207,.20),transparent 60%); filter:blur(24px); z-index:-1; }
     ::selection { background:var(--violet); color:#fff; }
     a { color:inherit; text-decoration:none; }
@@ -21,11 +22,15 @@
     .brand { display:flex; gap:11px; align-items:center; white-space:nowrap; }
     .brand-mark { width:40px; height:40px; display:grid; place-items:center; border-radius:13px; background:linear-gradient(145deg,#2e2059,#130e26); border:1px solid rgba(172,142,255,.30); box-shadow:inset 0 1px rgba(255,255,255,.10),0 0 26px rgba(104,67,250,.22); }
     .brand-mark svg { width:26px; height:26px; }
-    .brand-title { font-size:17px; font-weight:800; letter-spacing:-.65px; line-height:1; }
+    .brand-title { font-family:"Sora","Plus Jakarta Sans",sans-serif; font-size:17px; font-weight:700; letter-spacing:-.5px; line-height:1; }
+
+    /* Typography v1.1 — Sora for headings, Plus Jakarta Sans for UI/navigation. */
+    h2, h3 {font-family:"Sora","Plus Jakarta Sans",sans-serif;}
+    .nav-mobile a {font-family:"Plus Jakarta Sans",sans-serif;font-weight:600;}
     .brand-title b { color:#b9a0ff; }
     .brand-sub { margin-top:6px; font-size:9px; text-transform:uppercase; letter-spacing:2.65px; color:#8b83a8; font-weight:700; }
     .desktop-links { display:flex; gap:28px; align-items:center; margin-left:auto; padding-right:15px; }
-    .desktop-links a { font-size:13px; color:#b8b4cb; transition:color .2s; }
+    .desktop-links a { font-size:13px; font-weight:600; letter-spacing:.1px; color:#c5c1d7; transition:color .2s; }
     .desktop-links a:hover,.desktop-links a:focus-visible { color:#fff; }
     .btn { border:1px solid transparent; display:inline-flex; gap:10px; align-items:center; justify-content:center; white-space:nowrap; border-radius:11px; padding:14px 23px; font-weight:700; font-size:13px; letter-spacing:.05px; cursor:pointer; transition: transform .2s, background .2s, box-shadow .2s, border-color .2s; }
     .btn:hover { transform:translateY(-2px); }
@@ -42,10 +47,10 @@
     .hero { padding:103px 0 112px; position:relative; overflow:hidden; }
     .hero::after { content:""; position:absolute; pointer-events:none; width:620px; height:620px; top:70px; right:-190px; border-radius:50%; border:1px solid rgba(166,140,255,.12); box-shadow:0 0 0 105px rgba(146,100,252,.024),0 0 0 220px rgba(146,100,252,.013); z-index:-1; }
     .hero-grid { display:grid; grid-template-columns:minmax(0,1fr) minmax(0,1.15fr); gap:36px; align-items:center; }
-    .eyebrow { display:inline-flex; gap:10px; align-items:center; color:#c2a9ff; border:1px solid rgba(176,143,255,.22); padding:7px 11px; border-radius:30px; font:700 10px/1.3 "Segoe UI",sans-serif; letter-spacing:1.8px; text-transform:uppercase; background:rgba(134,83,252,.065); }
+    .eyebrow { display:inline-flex; gap:10px; align-items:center; color:#c2a9ff; border:1px solid rgba(176,143,255,.22); padding:7px 11px; border-radius:30px; font:700 10px/1.3 "Plus Jakarta Sans",sans-serif; letter-spacing:1.8px; text-transform:uppercase; background:rgba(134,83,252,.065); }
     .eyebrow .light { width:6px; height:6px; background:#9f7bff; border-radius:100%; box-shadow:0 0 0 4px rgba(163,122,255,.10),0 0 13px #ad8aff; }
     h1,h2,h3,p { margin-top:0; }
-    h1 { font-size:clamp(45px,5.1vw,72px); line-height:1.075; letter-spacing:-3.9px; margin:25px 0 24px; font-weight:800; }
+    h1 { font-family:"Sora","Plus Jakarta Sans",sans-serif; font-size:clamp(45px,5.1vw,72px); line-height:1.075; letter-spacing:-3.15px; margin:25px 0 24px; font-weight:700; }
     .grad { background:linear-gradient(110deg,#eee4ff 5%,#bca2ff 47%,#797aff 95%); -webkit-background-clip:text; background-clip:text; color:transparent; }
     .lead { color:var(--text); max-width:510px; font-size:16px; line-height:1.8; }
     .hero-actions { display:flex; gap:12px; flex-wrap:wrap; margin:28px 0 25px; }
@@ -100,7 +105,7 @@
     .feature:hover {transform:translateY(-4px);border-color:rgba(175,145,255,.38);}
     .ico {width:44px;height:44px;display:grid;place-items:center;border-radius:12px;border:1px solid rgba(168,128,255,.22);background:rgba(125,79,255,.11);color:#bb9fff;}
     .ico svg {width:23px;height:23px;stroke:currentColor;fill:none;stroke-width:1.7;stroke-linecap:round;stroke-linejoin:round;}
-    .feature h3 {font-size:16px;letter-spacing:-.4px;margin:21px 0 9px;}
+    .feature h3 {font-family:"Sora","Plus Jakarta Sans",sans-serif;font-size:16px;letter-spacing:-.3px;margin:21px 0 9px;font-weight:700;}
     .feature p {font-size:13px;line-height:1.75;color:#a6a0bc;margin:0;}
     .showcase {display:grid;grid-template-columns:1fr 1.1fr;gap:68px;align-items:center;}
     .showcase ul {padding:0;margin:25px 0 0;list-style:none;display:grid;gap:14px;}
@@ -122,7 +127,7 @@
     .steps {display:grid;grid-template-columns:repeat(3,1fr);gap:18px;margin-top:38px;}
     .step {padding:30px 27px;border-radius:17px;border:1px solid var(--line);background:linear-gradient(155deg,#171325,#0d0c16);position:relative;}
     .step .step-num {font-size:13px;color:#a88bfb;letter-spacing:1px;font-weight:800;}
-    .step h3 {font-size:18px;margin:14px 0 10px;}
+    .step h3 {font-family:"Sora","Plus Jakarta Sans",sans-serif;font-size:18px;margin:14px 0 10px;font-weight:700;}
     .step p {color:#a6a0b9;font-size:13px;line-height:1.75;margin:0;}
     .faq {max-width:840px;margin:33px auto 0;display:grid;gap:12px;}
     .faq details {border:1px solid var(--line);border-radius:12px;background:#12101d;overflow:hidden;}
@@ -229,10 +234,10 @@
             <div class="app-nav"><div class="app-tabs"><span class="app-tab active">◈ &nbsp; Principal</span><span class="app-tab">＋ Nova guia</span></div><span class="app-status"><i></i> Sessões organizadas</span></div>
             <div class="app-boardbar"><span>Workspace / Principal</span><span>01 &nbsp; 02 &nbsp; 03 &nbsp; <b style="color:#d5baff">04</b></span></div>
             <div class="app-panels">
-              <div class="app-panel"><div class="app-panelhead"><span>01 &nbsp; Conta principal</span><i></i></div><div class="app-url">ragnaidle.com.br/play</div><div class="game-screen"><span class="rune">◇</span><span class="g-name">RAGNAIDLE</span><span class="g-sub">Sessão 01</span></div></div>
-              <div class="app-panel"><div class="app-panelhead"><span>02 &nbsp; Conta alternativa</span><i></i></div><div class="app-url">ragnaidle.com.br/play</div><div class="game-screen g2"><span class="rune">✧</span><span class="g-name">RAGNAIDLE</span><span class="g-sub">Sessão 02</span></div></div>
-              <div class="app-panel"><div class="app-panelhead"><span>03 &nbsp; Conta auxiliar</span><i></i></div><div class="app-url">ragnaidle.com.br/play</div><div class="game-screen g3"><span class="rune">◇</span><span class="g-name">RAGNAIDLE</span><span class="g-sub">Sessão 03</span></div></div>
-              <div class="app-panel"><div class="app-panelhead"><span>04 &nbsp; Outra sessão</span><i></i></div><div class="app-url">ragnaidle.com.br/play</div><div class="game-screen g4"><span class="rune">✧</span><span class="g-name">RAGNAIDLE</span><span class="g-sub">Sessão 04</span></div></div>
+              <div class="app-panel"><div class="app-panelhead"><span>01 &nbsp; Conta principal</span><i></i></div><div class="app-url">idle-games.example/play</div><div class="game-screen"><span class="rune">◇</span><span class="g-name">IDLE GAMES</span><span class="g-sub">Sessão 01</span></div></div>
+              <div class="app-panel"><div class="app-panelhead"><span>02 &nbsp; Conta alternativa</span><i></i></div><div class="app-url">idle-games.example/play</div><div class="game-screen g2"><span class="rune">✧</span><span class="g-name">IDLE GAMES</span><span class="g-sub">Sessão 02</span></div></div>
+              <div class="app-panel"><div class="app-panelhead"><span>03 &nbsp; Conta auxiliar</span><i></i></div><div class="app-url">idle-games.example/play</div><div class="game-screen g3"><span class="rune">◇</span><span class="g-name">IDLE GAMES</span><span class="g-sub">Sessão 03</span></div></div>
+              <div class="app-panel"><div class="app-panelhead"><span>04 &nbsp; Outra sessão</span><i></i></div><div class="app-url">idle-games.example/play</div><div class="game-screen g4"><span class="rune">✧</span><span class="g-name">IDLE GAMES</span><span class="g-sub">Sessão 04</span></div></div>
             </div>
             <div class="app-bottombar"><span>ORBIT · Prévia ilustrativa</span><span><span class="val">4</span> painéis configurados</span></div>
           </div>
