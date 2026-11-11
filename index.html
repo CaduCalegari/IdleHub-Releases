@@ -124,6 +124,25 @@
     .metric-card span {font-size:10px;color:#a99dbf;display:block;}
     .metric-card strong {font-size:16px;color:#e4d9fc;display:block;margin-top:5px;}
     .metric-disclaimer {color:#777087;font-size:10px;margin-top:13px;}
+
+    /* v1.3 / prévia de planos — sem vendas habilitadas */
+    .plan-grid{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:18px;margin-top:38px}
+    .plan{min-width:0;padding:32px;border:1px solid rgba(182,158,250,.18);border-radius:18px;background:linear-gradient(145deg,#181424,#100e19);display:flex;flex-direction:column}
+    .plan.premium{background:radial-gradient(circle at 100% 0,rgba(120,78,230,.17),transparent 60%),linear-gradient(145deg,#221a31,#110f1a);border-color:rgba(176,140,255,.47);box-shadow:0 22px 65px rgba(83,51,162,.10)}
+    .plan-top{display:flex;align-items:center;gap:10px;flex-wrap:wrap;color:#cdb6ff;text-transform:uppercase;letter-spacing:1.2px;font-size:12px;font-weight:800}
+    .plan-flag{padding:4px 9px;border:1px solid rgba(168,133,250,.24);background:rgba(151,105,255,.13);border-radius:99px;text-transform:none;letter-spacing:0;color:#e6dfff;font-size:10px;font-weight:700}
+    .plan-price{font-family:"Sora","Plus Jakarta Sans",sans-serif;font-size:clamp(31px,3vw,45px);font-weight:700;color:white;letter-spacing:-1.5px;margin:22px 0 12px;line-height:1.3}
+    .plan-price small{font:600 13px "Plus Jakarta Sans",sans-serif;color:#aaa3be;letter-spacing:0}
+    .plan p{font-size:13px;line-height:1.8;color:#b2adc4;min-height:77px;margin:0 0 18px}
+    .plan ul{list-style:none;padding:20px 0 0;margin:0;border-top:1px solid rgba(191,166,255,.13);display:grid;gap:13px}
+    .plan li{font-size:13px;color:#d3cce5;display:flex;gap:10px;line-height:1.5}
+    .plan li:before{content:"✓";color:#a889ff;font-weight:800;flex-shrink:0}
+    .plan-status{margin-top:auto;padding-top:27px;color:#bfaaff;font-size:12px;font-weight:700}
+    .founder{border:1px solid rgba(169,135,245,.23);background:linear-gradient(110deg,rgba(118,78,217,.14),rgba(40,31,64,.34));border-radius:15px;padding:21px 25px;margin-top:20px;display:flex;align-items:center;justify-content:space-between;gap:20px}
+    .founder strong{font-size:14px;color:#e9ddff;display:block;margin-bottom:4px}
+    .founder span{font-size:12px;color:#aaa2c0}
+    .founder b{font-family:"Sora",sans-serif;font-size:24px;white-space:nowrap;color:#d4beff}
+    .plan-note{font-size:12px;line-height:1.8;color:#918ba6;margin:18px 0 0}
     .steps {display:grid;grid-template-columns:repeat(3,1fr);gap:18px;margin-top:38px;}
     .step {padding:30px 27px;border-radius:17px;border:1px solid var(--line);background:linear-gradient(155deg,#171325,#0d0c16);position:relative;}
     .step .step-num {font-size:13px;color:#a88bfb;letter-spacing:1px;font-weight:800;}
@@ -191,6 +210,10 @@
       .feature {min-height:0;}
       .showcase {grid-template-columns:1fr;gap:30px;}
       .steps {grid-template-columns:1fr;gap:11px;}
+      .plan-grid{grid-template-columns:1fr;gap:14px}
+      .plan{padding:25px 22px}
+      .plan p{min-height:0}
+      .founder{flex-direction:column;align-items:flex-start;gap:9px}
       .last-cta {padding:34px 25px;flex-direction:column;align-items:stretch;}
       .last-cta h2 {font-size:35px;}
       .footer-grid {display:block;}
@@ -211,11 +234,11 @@
           <span class="brand-mark" aria-hidden="true"><svg viewBox="0 0 30 30" fill="none"><ellipse cx="15" cy="15" rx="11" ry="6.7" stroke="#b79aff" stroke-width="1.6" transform="rotate(-42 15 15)"/><ellipse cx="15" cy="15" rx="11" ry="6.7" stroke="#8470f5" stroke-width="1.25" transform="rotate(42 15 15)"/><circle cx="15" cy="15" r="2.7" fill="#e6d8ff"/></svg></span>
           <span><span class="brand-title">IdleHub <b>ORBIT</b></span><span class="brand-sub">Desktop experience</span></span>
         </a>
-        <nav class="desktop-links" aria-label="Navegação principal"><a href="#recursos">Recursos</a><a href="#interface">Interface</a><a href="#instalacao">Como começar</a><a href="#faq">Perguntas frequentes</a></nav>
+        <nav class="desktop-links" aria-label="Navegação principal"><a href="#recursos">Recursos</a><a href="#interface">Interface</a><a href="#planos">Planos</a><a href="#instalacao">Como começar</a><a href="#faq">Perguntas frequentes</a></nav>
         <a class="btn btn-primary nav-cta" href="https://github.com/CaduCalegari/IdleHub-Releases/releases/latest" target="_blank" rel="noopener noreferrer">Baixar para Windows <span aria-hidden="true">↗</span></a>
         <button class="nav-toggle" type="button" aria-label="Abrir menu" aria-expanded="false" aria-controls="nav-mobile"><svg width="23" height="23" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M4 7h16M4 12h16M4 17h16"/></svg></button>
       </div>
-      <nav id="nav-mobile" class="nav-mobile" aria-label="Navegação móvel"><a href="#recursos">Recursos</a><a href="#interface">Interface</a><a href="#instalacao">Como começar</a><a href="#faq">Perguntas frequentes</a><a href="https://github.com/CaduCalegari/IdleHub-Releases/releases/latest" target="_blank" rel="noopener noreferrer">Baixar para Windows ↗</a></nav>
+      <nav id="nav-mobile" class="nav-mobile" aria-label="Navegação móvel"><a href="#recursos">Recursos</a><a href="#interface">Interface</a><a href="#planos">Planos</a><a href="#instalacao">Como começar</a><a href="#faq">Perguntas frequentes</a><a href="https://github.com/CaduCalegari/IdleHub-Releases/releases/latest" target="_blank" rel="noopener noreferrer">Baixar para Windows ↗</a></nav>
     </div>
   </header>
   <main>
@@ -281,19 +304,33 @@
         </div>
       </div>
     </section>
+
+    <section class="section" id="planos">
+      <div class="container">
+        <span class="section-label">04 / Planos e licenças</span>
+        <div class="heading"><h2>Escolha seu ritmo.<br><span class="grad">O controle é seu.</span></h2><p class="section-desc">Duas possibilidades em estudo para acessar o ORBIT. Esta é uma prévia dos valores planejados, não uma oferta de venda ativa.</p></div>
+        <div class="plan-grid">
+          <article class="plan"><div class="plan-top">ORBIT Mensal <span class="plan-flag">Em planejamento</span></div><div class="plan-price">R$ 9,90 <small>/ mês</small></div><p>Flexibilidade para utilizar o aplicativo durante o período contratado, com atualizações enquanto a assinatura estiver ativa.</p><ul><li>Até 4 painéis por guia</li><li>Recursos principais do ORBIT</li><li>Renovação mensal prevista, sem fidelidade</li></ul><div class="plan-status">Disponibilidade: em preparação</div></article>
+          <article class="plan premium"><div class="plan-top">ORBIT Definitivo <span class="plan-flag">Compra única proposta</span></div><div class="plan-price">R$ 49,90 <small>/ pagamento único</small></div><p>Uso permanente da versão principal v3 adquirida, sem mensalidades. Futuras versões principais poderão ter condições próprias.</p><ul><li>Até 4 painéis por guia</li><li>Recursos principais da versão v3</li><li>Correções de manutenção da v3 previstas</li></ul><div class="plan-status">Disponibilidade: em preparação</div></article>
+        </div>
+        <div class="founder"><div><strong>Edição Fundador — ideia de lançamento</strong><span>Preço especial estudado para os 10 primeiros compradores da licença definitiva v3, sujeito à confirmação.</span></div><b>R$ 29,90</b></div>
+        <p class="plan-note">Preços e condições sujeitos a mudanças antes do lançamento. Ainda não há compra, assinatura ou ativação de licença disponível neste site. O download continua pelo canal oficial de distribuição.</p>
+      </div>
+    </section>
     <section class="section" id="instalacao">
-      <div class="container"><span class="section-label">04 / Primeiros passos</span><div class="heading"><h2>Do download ao seu <span class="grad">primeiro painel.</span></h2><p class="section-desc">Um começo simples, pensado para quem quer instalar, configurar e usar.</p></div>
+      <div class="container"><span class="section-label">05 / Primeiros passos</span><div class="heading"><h2>Do download ao seu <span class="grad">primeiro painel.</span></h2><p class="section-desc">Um começo simples, pensado para quem quer instalar, configurar e usar.</p></div>
         <div class="steps"><article class="step"><span class="step-num">01 / DOWNLOAD</span><h3>Baixe para Windows</h3><p>Acesse a versão mais recente no canal oficial do GitHub Releases e selecione o instalador do Windows.</p></article><article class="step"><span class="step-num">02 / INSTALAÇÃO</span><h3>Instale e inicie</h3><p>Execute o instalador. Ao abrir o ORBIT, deixe o inicializador verificar se há atualizações disponíveis.</p></article><article class="step"><span class="step-num">03 / CONFIGURAÇÃO</span><h3>Monte seu espaço</h3><p>Escolha quantos painéis deseja, abra os endereços e faça login nos serviços que utiliza.</p></article></div>
       </div>
     </section>
     <section class="section" id="faq">
-      <div class="container"><div class="heading" style="text-align:center;margin-inline:auto;"><span class="section-label">05 / Dúvidas comuns</span><h2>Simples assim.</h2><p class="section-desc">O essencial para você conhecer o IdleHub antes de instalar.</p></div>
+      <div class="container"><div class="heading" style="text-align:center;margin-inline:auto;"><span class="section-label">06 / Dúvidas comuns</span><h2>Simples assim.</h2><p class="section-desc">O essencial para você conhecer o IdleHub antes de instalar.</p></div>
         <div class="faq">
           <details><summary>Em qual sistema o IdleHub funciona?</summary><p>A distribuição atual é destinada ao Windows, com instalador para computadores de 64 bits.</p></details>
           <details><summary>Quantas contas posso utilizar?</summary><p>O aplicativo permite configurar até quatro painéis por guia, com sessões de navegação independentes. A quantidade de contas permitida em cada jogo ou serviço depende das regras desse serviço.</p></details>
           <details><summary>Preciso entrar na conta toda vez?</summary><p>O IdleHub utiliza sessões persistentes para ajudar a manter logins. Alguns sites podem exigir autenticação novamente por suas próprias políticas ou por motivos de segurança.</p></details>
           <details><summary>Como recebo atualizações?</summary><p>O inicializador verifica a disponibilidade de novas versões. Quando necessário, o aplicativo orienta a atualização antes de iniciar.</p></details>
           <details><summary>O botão Otimizar RAM reduz o uso de memória?</summary><p>Ele limpa o cache HTTP descartável do painel, sem apagar cookies ou logins. Isso não garante redução imediata do consumo de memória.</p></details>
+          <details><summary>Os planos já estão disponíveis para compra?</summary><p>Ainda não. Os valores são uma proposta em análise, e o sistema comercial de cobrança e licenciamento ainda não foi disponibilizado.</p></details>
           <details><summary>Onde posso encontrar a versão mais recente?</summary><p>No repositório público oficial de distribuição: <a style="color:#bfa6ff;text-decoration:underline" href="https://github.com/CaduCalegari/IdleHub-Releases/releases/latest" target="_blank" rel="noopener noreferrer">GitHub Releases do IdleHub</a>.</p></details>
         </div>
       </div>
@@ -302,7 +339,7 @@
       <div class="last-cta"><div><span class="section-label">COMECE PELO SEU ESPAÇO</span><h2>Mais organização.<br><span class="grad">Mais liberdade.</span></h2><p>Conheça o IdleHub ORBIT e organize suas sessões em uma central desktop feita para você.</p></div><a class="btn btn-primary" href="https://github.com/CaduCalegari/IdleHub-Releases/releases/latest" target="_blank" rel="noopener noreferrer">↓ &nbsp; Acessar download oficial</a></div>
     </section>
   </main>
-  <footer><div class="container footer-grid"><div><div class="brand-title">IdleHub <b style="color:#ab91ff">ORBIT</b></div><p>Seus espaços. Seus jogos. Seus logins.<br>Prévia pública de demonstração — site oficial ainda não lançado.</p></div><nav aria-label="Links do rodapé"><a href="#inicio">Voltar ao topo</a><a href="#recursos">Recursos</a><a href="#faq">FAQ</a><a href="https://github.com/CaduCalegari/IdleHub-Releases/releases/latest" target="_blank" rel="noopener noreferrer">GitHub Releases ↗</a></nav></div></footer>
+  <footer><div class="container footer-grid"><div><div class="brand-title">IdleHub <b style="color:#ab91ff">ORBIT</b></div><p>Seus espaços. Seus jogos. Seus logins.<br>Prévia pública de demonstração — site oficial ainda não lançado.</p></div><nav aria-label="Links do rodapé"><a href="#inicio">Voltar ao topo</a><a href="#recursos">Recursos</a><a href="#planos">Planos</a><a href="#faq">FAQ</a><a href="https://github.com/CaduCalegari/IdleHub-Releases/releases/latest" target="_blank" rel="noopener noreferrer">GitHub Releases ↗</a></nav></div></footer>
   <script>
     (() => {
       const toggle = document.querySelector('.nav-toggle');
