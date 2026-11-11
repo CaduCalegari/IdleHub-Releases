@@ -1,0 +1,270 @@
+<!doctype html>
+<html lang="pt-BR">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<meta name="theme-color" content="#0a0910">
+<meta name="description" content="IdleHub ORBIT — prévia de design da área do cliente. Login e recursos apenas ilustrativos, sem coleta de dados.">
+<title>Minha Área • IdleHub ORBIT (Prévia)</title>
+<style>
+@import url("https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&family=Sora:wght@500;600;700;800&display=swap");
+:root{color-scheme:dark;--bg:#0a0910;--panel:#14111f;--panel2:#1b1728;--white:#f6f2ff;--text:#c4bdd4;--muted:#9289a6;--line:rgba(186,153,255,.15);--violet:#a386ff;--violet2:#7151ef;--green:#99e5bb;--gold:#e4bf7b}
+*{box-sizing:border-box}
+html{scroll-behavior:smooth}
+body{margin:0;font:14px/1.65 "Plus Jakarta Sans","Segoe UI",sans-serif;background:radial-gradient(ellipse 65% 38% at 75% 0,rgba(111,71,225,.14),transparent),#0a0910;color:var(--white);min-height:100vh}
+button,a,input{font:inherit}
+button{cursor:pointer}
+button:focus-visible,a:focus-visible{outline:2px solid #d5baff;outline-offset:4px}
+a{color:inherit;text-decoration:none}
+.top{position:sticky;top:0;z-index:20;min-height:74px;background:rgba(10,9,17,.87);border-bottom:1px solid var(--line);backdrop-filter:blur(16px);display:flex;align-items:center;justify-content:space-between;gap:16px;padding:12px max(24px,calc((100vw - 1220px)/2))}
+.logo{display:flex;align-items:center;gap:11px}
+.logo-ico{display:grid;place-items:center;width:40px;height:40px;border:1px solid rgba(179,146,255,.34);border-radius:12px;color:#c9b6ff;background:linear-gradient(140deg,#35205b,#151021);box-shadow:0 0 20px rgba(108,64,227,.14);font-size:25px}
+.logo b{display:block;line-height:1.1;font:700 15px "Sora",sans-serif}
+.logo b span{color:#ba9fff}
+.logo small{display:block;color:#8c82aa;font-size:9px;letter-spacing:2px;margin-top:5px}
+.top-right{display:flex;gap:14px;align-items:center}
+.top-link{font-size:12px;color:#c6bfd6;font-weight:700}
+.top-link:hover{color:#fff}
+.preview-tag{font-size:10px;font-weight:800;letter-spacing:.6px;color:#dbc9ff;background:rgba(148,110,236,.13);border:1px solid rgba(163,118,251,.30);padding:7px 10px;border-radius:30px}
+.notice{margin:0;padding:10px 18px;text-align:center;font-size:11px;color:#d8c4fa;background:rgba(99,65,169,.17);border-bottom:1px solid rgba(160,118,232,.15)}
+.notice strong{color:#fff}
+.wrap{width:min(1180px,calc(100% - 40px));margin:0 auto}
+.login-layout{display:grid;grid-template-columns:minmax(0,1fr) minmax(340px,440px);gap:65px;align-items:center;min-height:calc(100vh - 130px);padding:55px 0 75px}
+.eyebrow{display:inline-flex;align-items:center;gap:9px;color:#b69cff;font-size:11px;font-weight:800;letter-spacing:2px;text-transform:uppercase}
+.pulse{height:7px;width:7px;display:inline-block;background:#a483ff;border-radius:50%;box-shadow:0 0 0 5px rgba(152,108,255,.12)}
+h1,h2,h3,p{margin-top:0}
+h1,h2,h3{font-family:"Sora","Plus Jakarta Sans",sans-serif}
+h1{font-size:clamp(37px,4.5vw,59px);line-height:1.16;letter-spacing:-2.8px;font-weight:700;margin:23px 0}
+.gradient{background:linear-gradient(100deg,#f0e2ff,#bca2ff 60%,#8b8efc);background-clip:text;-webkit-background-clip:text;color:transparent}
+.login-copy>p{font-size:15px;color:var(--text);max-width:510px;line-height:1.9}
+.highlights{margin-top:32px;display:grid;gap:16px}
+.highlight{display:flex;align-items:center;gap:13px;color:#c2bad6;font-size:13px}
+.highlight i{font-style:normal;display:grid;place-items:center;color:#b99dff;background:rgba(148,108,254,.11);border:1px solid rgba(153,118,244,.22);width:34px;height:34px;border-radius:10px;flex-shrink:0}
+.login-card{border:1px solid rgba(184,151,255,.23);border-radius:23px;padding:37px;background:linear-gradient(145deg,rgba(32,25,50,.96),rgba(15,13,24,.98));box-shadow:0 30px 100px rgba(1,1,10,.46),0 0 50px rgba(113,61,214,.065)}
+.card-ico{width:48px;height:48px;border:1px solid rgba(167,126,250,.3);border-radius:14px;background:linear-gradient(130deg,#483071,#21172f);color:#d1baff;display:grid;place-items:center;font-size:26px;margin-bottom:24px}
+.login-card h2{font-size:25px;letter-spacing:-.9px;margin-bottom:10px}
+.login-card>p{color:#aba3c0;font-size:12px;line-height:1.8;margin-bottom:25px}
+.field{display:block;color:#d9d1e6;font-size:12px;font-weight:700;margin-bottom:15px}
+.field input{display:block;width:100%;padding:14px 15px;border-radius:10px;background:#13111d;color:#9991a8;border:1px solid rgba(187,157,255,.14);margin-top:8px;outline:0}
+.field input:disabled{opacity:1;cursor:not-allowed}
+.inline-link{font-size:11px;color:#b9a2f0;text-decoration:underline;text-underline-offset:3px}
+.form-footer{display:flex;align-items:center;justify-content:space-between;gap:8px;margin:10px 0 22px;font-size:11px;color:#827993}
+.btn{display:inline-flex;justify-content:center;align-items:center;gap:10px;padding:13px 19px;border-radius:10px;font-size:13px;font-weight:800;border:1px solid transparent;transition:transform .2s,border-color .2s,box-shadow .2s}
+.btn:hover:not(:disabled){transform:translateY(-2px)}
+.btn-primary{background:linear-gradient(110deg,#a37cff,#704fed);color:white;box-shadow:0 10px 30px rgba(109,69,233,.22)}
+.btn-outline{border-color:rgba(184,153,255,.24);background:rgba(161,113,255,.07);color:#e6dcff}
+.btn-dim{background:#231e2d;border-color:#40334d;color:#c1b3cb}
+.btn:disabled{cursor:not-allowed;opacity:.55;transform:none}
+.btn-full{width:100%}
+.ghost-line{margin:19px 0;display:flex;align-items:center;gap:13px;color:#766b87;font-size:10px;text-transform:uppercase;letter-spacing:1px}
+.ghost-line::before,.ghost-line::after{content:"";height:1px;background:var(--line);flex:1}
+.demo-note{font-size:10px;color:#9286a5;line-height:1.7;text-align:center;margin:16px 0 0}
+#dashboard-screen{display:none}
+.dashboard-head{padding:43px 0 26px;display:flex;justify-content:space-between;align-items:flex-end;gap:20px}
+.dashboard-head h1{font-size:clamp(29px,3vw,39px);letter-spacing:-1.7px;margin:10px 0 6px}
+.dashboard-head p{color:#a59cb8;font-size:13px;margin:0}
+.demo-tools{display:flex;gap:8px;flex-wrap:wrap}
+.dashboard-layout{display:grid;grid-template-columns:232px minmax(0,1fr);gap:22px;padding:0 0 80px}
+.side{background:rgba(21,17,31,.86);border:1px solid var(--line);border-radius:18px;padding:17px;align-self:start}
+.side-label{font-size:10px;letter-spacing:1.7px;color:#817795;text-transform:uppercase;font-weight:800;margin:11px 11px 16px}
+.side button{width:100%;border:0;background:transparent;color:#a69eb7;font-size:12px;font-weight:700;text-align:left;padding:12px 13px;border-radius:9px;margin-bottom:4px;display:flex;align-items:center;gap:10px;transition:background .2s,color .2s}
+.side button.active{background:rgba(135,94,235,.16);color:#e4d6ff;border:1px solid rgba(157,116,252,.20)}
+.side button:not(.active):hover{background:rgba(255,255,255,.035);color:white}
+.side .subtle{border-top:1px solid var(--line);margin-top:14px;padding-top:15px;color:#8a7f9c;font-size:11px;line-height:1.75}
+.view{display:none}
+.view.active{display:block}
+.view-title{font-size:18px;letter-spacing:-.4px;margin:3px 0 15px}
+.cols{display:grid;grid-template-columns:1.2fr 1fr;gap:16px}
+.panel{border:1px solid var(--line);border-radius:16px;padding:24px;background:linear-gradient(145deg,#1b1727,#12101b);min-width:0}
+.panel h3{font-size:15px;letter-spacing:-.2px;margin-bottom:12px}
+.panel p{color:#a89eb9;font-size:12px;line-height:1.85}
+.status{display:inline-flex;align-items:center;gap:7px;background:rgba(71,158,117,.13);border:1px solid rgba(124,222,165,.22);color:#b3edcd;border-radius:30px;font-size:10px;font-weight:800;padding:6px 10px}
+.status i{width:6px;height:6px;background:#9adeb9;border-radius:50%}
+.metric{font-family:"Sora",sans-serif;font-size:23px;letter-spacing:-1px;margin:11px 0 7px;font-weight:700}
+.muted{color:#9f94b2;font-size:12px}
+.info-row{display:flex;gap:15px;align-items:center;justify-content:space-between;border-top:1px solid var(--line);padding:14px 0;font-size:12px}
+.info-row span:first-child{color:#9990ac}
+.info-row strong{font-weight:700;text-align:right;color:#e1d9ed}
+.quick-actions{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:14px;margin:16px 0}
+.quick-actions .panel{padding:20px}
+.quick-actions h3{font-size:13px}
+.quick-actions p{min-height:55px;margin-bottom:12px}
+.wide{margin-top:16px}
+.sample{font-size:10px;display:inline-block;letter-spacing:.6px;text-transform:uppercase;color:#c4a6ff;background:rgba(166,117,250,.10);border:1px solid rgba(167,120,255,.19);border-radius:99px;padding:5px 9px}
+.gold-sample{border-color:rgba(233,190,111,.36);background:radial-gradient(circle at 100% 0,rgba(216,165,73,.13),transparent 60%),linear-gradient(145deg,#292219,#161419)}
+.gold-sample .metric{color:#f0d49a}
+.gold-sample .sample{color:#e6c487;border-color:rgba(226,183,99,.3);background:rgba(226,183,99,.10)}
+.gold-sample .status{color:#f1d99e;border-color:rgba(226,183,99,.30);background:rgba(226,183,99,.1)}
+.gold-sample .status i{background:#e8c782}
+.gold-art{border:1px solid rgba(233,190,111,.3);color:#edd19c;background:#1b1818;padding:18px 21px;border-radius:12px;font:700 17px "Sora",sans-serif;letter-spacing:2px;margin:17px 0}
+.empty{margin-top:15px;background:#13111c;border:1px dashed rgba(183,158,236,.23);border-radius:12px;padding:28px;color:#aaa1b9;text-align:center;font-size:12px}
+.section-footer{color:#8e839f;font-size:11px;line-height:1.8;margin-top:17px}
+#dashboard-screen[data-gold="true"] .gold-only{display:block}
+#dashboard-screen .gold-only{display:none}
+#dashboard-screen[data-gold="true"] .regular-only{display:none}
+footer{border-top:1px solid var(--line);text-align:center;padding:24px 16px;font-size:11px;color:#8a809e}
+@media(max-width:900px){.login-layout{gap:30px;grid-template-columns:1fr;min-height:0}.login-copy{text-align:center}.login-copy>p{margin-inline:auto}.highlights{max-width:430px;margin:30px auto 0}.login-card{max-width:480px;width:100%;margin:0 auto}.dashboard-layout{grid-template-columns:1fr}.side{display:flex;overflow:auto;align-items:center;gap:7px}.side-label,.side .subtle{display:none}.side button{width:auto;flex-shrink:0;white-space:nowrap;margin:0}.cols{grid-template-columns:1fr}}
+@media(max-width:600px){.top{padding:12px 16px}.top-link{display:none}.wrap{width:min(100% - 28px,1180px)}.login-layout{padding:48px 0}.login-card{padding:25px 22px}.dashboard-head{display:block;padding-top:30px}.demo-tools{margin-top:20px}.quick-actions{grid-template-columns:1fr}.quick-actions p{min-height:0}.panel{padding:20px}.info-row{align-items:flex-start}.founder{padding:0}.notice{font-size:10px}}
+@media(prefers-reduced-motion:reduce){html{scroll-behavior:auto}*,*::before,*::after{transition:none!important}}
+</style>
+</head>
+<body>
+<header class="top">
+  <a class="logo" href="./index.html" aria-label="Voltar ao site do IdleHub ORBIT"><span class="logo-ico">◇</span><span><b>IdleHub <span>ORBIT</span></b><small>MINHA ÁREA</small></span></a>
+  <div class="top-right"><span class="preview-tag">PRÉVIA DE DESIGN</span><a class="top-link" href="./index.html">← Voltar ao site</a></div>
+</header>
+<div class="notice" role="note"><strong>Demonstração visual:</strong> não há login, pagamento, banco de dados ou downloads privados ativos. Não forneça dados reais nesta página.</div>
+<main>
+  <section id="login-screen" class="wrap login-layout" aria-label="Prévia da tela de login">
+    <div class="login-copy">
+      <div class="eyebrow"><i class="pulse"></i> Seu universo ORBIT</div>
+      <h1>Seus jogos.<br>Seus planos.<br><span class="gradient">Seu espaço.</span></h1>
+      <p>Acesse uma central feita para acompanhar sua assinatura, consultar sua licença e encontrar tudo que precisa para aproveitar o IdleHub.</p>
+      <div class="highlights">
+        <div class="highlight"><i>◇</i><span>Informações da assinatura em um só lugar</span></div>
+        <div class="highlight"><i>✦</i><span>Status da licença e benefícios Founder Gold</span></div>
+        <div class="highlight"><i>↓</i><span>Área reservada para downloads autorizados</span></div>
+      </div>
+    </div>
+    <div class="login-card">
+      <div class="card-ico">◇</div>
+      <h2>Bem-vindo de volta.</h2>
+      <p>Esta é a aparência planejada da autenticação. Os campos estão desabilitados nesta prévia para proteger suas informações.</p>
+      <label class="field">E-mail<input type="email" autocomplete="off" placeholder="seuemail@exemplo.com" disabled aria-disabled="true"></label>
+      <label class="field">Senha<input type="password" autocomplete="off" placeholder="••••••••" disabled aria-disabled="true"></label>
+      <div class="form-footer"><span>□ Manter conectado</span><span class="inline-link">Recuperar senha (futuro)</span></div>
+      <button type="button" class="btn btn-dim btn-full" disabled>Entrar na conta — indisponível</button>
+      <div class="ghost-line">visualização da interface</div>
+      <button type="button" id="enter-demo" class="btn btn-primary btn-full">Explorar painel de exemplo →</button>
+      <p class="demo-note">Sem login real, coleta de credenciais ou acesso a dados de clientes.</p>
+    </div>
+  </section>
+  <section id="dashboard-screen" class="wrap" data-gold="false" aria-label="Painel demonstrativo do cliente">
+    <div class="dashboard-head">
+      <div><div class="eyebrow"><i class="pulse"></i> Área do cliente · modo demonstração</div><h1>Minha Área<span class="gradient">.</span></h1><p>Seu espaço pessoal para gerenciar sua experiência no IdleHub ORBIT.</p></div>
+      <div class="demo-tools"><button type="button" class="btn btn-outline" id="toggle-gold" aria-pressed="false">✦ Simular Founder Gold</button><button type="button" class="btn btn-dim" id="exit-demo">← Voltar ao login</button></div>
+    </div>
+    <div class="dashboard-layout">
+      <aside class="side" aria-label="Menu demonstrativo da Minha Área">
+        <div class="side-label">Minha conta</div>
+        <button type="button" class="active" data-view="overview">◈ &nbsp; Visão geral</button>
+        <button type="button" data-view="subscription">◇ &nbsp; Assinatura</button>
+        <button type="button" data-view="downloads">↓ &nbsp; Downloads</button>
+        <button type="button" data-view="billing">▤ &nbsp; Pagamentos</button>
+        <button type="button" data-view="security">⚿ &nbsp; Segurança</button>
+        <div class="subtle">Protótipo de interface.<br>Os dados exibidos são fictícios.</div>
+      </aside>
+      <div>
+        <div class="view active" id="view-overview">
+          <h2 class="view-title">Visão geral</h2>
+          <div class="cols">
+            <article class="panel" id="overview-plan">
+              <span class="sample">Dados de exemplo</span>
+              <h3 style="margin-top:15px">Minha assinatura</h3>
+              <div class="metric regular-only">ORBIT Anual</div>
+              <div class="metric gold-only">Founder Gold ✦</div>
+              <span class="status"><i></i> Ativa (simulação)</span>
+              <div class="info-row"><span>Plano</span><strong class="regular-only">Anual · 12 meses</strong><strong class="gold-only">Fundador · vitalício</strong></div>
+              <div class="info-row"><span>Renovação</span><strong class="regular-only">12 meses após a ativação</strong><strong class="gold-only">Não se aplica</strong></div>
+              <div class="info-row"><span>Licença</span><strong>Demo · sem ativação real</strong></div>
+            </article>
+            <article class="panel">
+              <span class="sample">Dados de exemplo</span>
+              <h3 style="margin-top:15px">Minha conta</h3>
+              <div class="metric" style="font-size:18px">Usuário de demonstração</div>
+              <p>Dados de perfil e preferências pessoais disponíveis depois da implantação do sistema de contas.</p>
+              <div class="info-row"><span>E-mail</span><strong>Não vinculado</strong></div>
+              <div class="info-row"><span>Status</span><strong>Modo de visualização</strong></div>
+            </article>
+          </div>
+          <div class="quick-actions">
+            <article class="panel"><h3>↓ &nbsp; Download do ORBIT</h3><p>Acesso exclusivo planejado para licenças válidas.</p><button type="button" class="btn btn-dim btn-full" data-go="downloads">Ver seção de downloads</button></article>
+            <article class="panel"><h3>◇ &nbsp; Minha assinatura</h3><p>Prazo, situação da licença e condições do plano.</p><button type="button" class="btn btn-dim btn-full" data-go="subscription">Ver assinatura</button></article>
+            <article class="panel"><h3>⚿ &nbsp; Segurança</h3><p>Proteja o acesso à sua conta e aos dados de licença.</p><button type="button" class="btn btn-dim btn-full" data-go="security">Ver segurança</button></article>
+          </div>
+        </div>
+        <div class="view" id="view-subscription">
+          <h2 class="view-title">Minha assinatura</h2>
+          <article class="panel" id="subscription-plan">
+            <span class="sample">Demonstração</span>
+            <h3 style="margin-top:18px">Detalhes do acesso</h3>
+            <div class="info-row"><span>Plano ativo</span><strong class="regular-only">ORBIT Anual</strong><strong class="gold-only">ORBIT Founder Gold</strong></div>
+            <div class="info-row"><span>Valor do plano de referência</span><strong>R$ 249,90</strong></div>
+            <div class="info-row"><span>Validade</span><strong class="regular-only">12 meses a partir da contratação</strong><strong class="gold-only">Vitalícia — proposta de lançamento</strong></div>
+            <div class="info-row"><span>Disponibilidade comercial</span><strong>Em planejamento</strong></div>
+            <p class="section-footer">Nenhum contrato foi firmado, nenhuma assinatura foi adquirida e nenhuma cobrança foi registrada neste exemplo.</p>
+          </article>
+        </div>
+        <div class="view" id="view-downloads">
+          <h2 class="view-title">Downloads</h2>
+          <article class="panel">
+            <span class="sample">Acesso reservado · conceito</span>
+            <h3 style="margin-top:18px">IdleHub ORBIT para Windows</h3>
+            <p>Na versão real, esta página oferecerá o instalador apenas após validar sua sessão e os direitos de acesso da sua licença no servidor.</p>
+            <div class="info-row"><span>Plataforma</span><strong>Windows · 64 bits</strong></div>
+            <div class="info-row"><span>Permissão de download</span><strong>Requer autenticação real</strong></div>
+            <button class="btn btn-dim" type="button" disabled>↓ Download indisponível na prévia</button>
+            <p class="section-footer">Ocultar o botão não protege arquivos públicos. Para garantir exclusividade, o instalador precisará sair da distribuição pública e ser entregue por links temporários autorizados.</p>
+          </article>
+        </div>
+        <div class="view" id="view-billing">
+          <h2 class="view-title">Histórico de pagamentos</h2>
+          <article class="panel">
+            <span class="sample">Integração futura</span>
+            <h3 style="margin-top:17px">Transações e comprovantes</h3>
+            <p>Quando os pagamentos estiverem disponíveis, o cliente poderá consultar cobranças, recibos e situação da assinatura por aqui.</p>
+            <div class="empty">Nenhum pagamento real foi registrado nesta demonstração.</div>
+          </article>
+        </div>
+        <div class="view" id="view-security">
+          <h2 class="view-title">Segurança da conta</h2>
+          <article class="panel">
+            <span class="sample">Implementação futura</span>
+            <h3 style="margin-top:17px">Controle e proteção</h3>
+            <div class="info-row"><span>Alterar senha</span><strong>Após integração</strong></div>
+            <div class="info-row"><span>Recuperar acesso</span><strong>Após integração</strong></div>
+            <div class="info-row"><span>Verificação de e-mail</span><strong>Após integração</strong></div>
+            <div class="info-row"><span>Sessões e dispositivos</span><strong>Após integração</strong></div>
+            <p class="section-footer">Nenhuma senha ou token é solicitado ou armazenado nesta página de demonstração.</p>
+          </article>
+        </div>
+        <article class="panel gold-only gold-sample wide" id="gold-banner">
+          <span class="sample">Edição limitada · visual demonstrativo</span>
+          <div class="gold-art">✦ FOUNDER GOLD</div>
+          <h3>Uma identidade única para os primeiros apoiadores.</h3>
+          <p>Conceito de selo dourado, tema premium e licença vitalícia reservado aos 10 primeiros compradores anuais elegíveis, quando o programa for oficialmente lançado.</p>
+        </article>
+      </div>
+    </div>
+  </section>
+</main>
+<footer>IdleHub ORBIT · Minha Área (prévia conceitual) · Nenhum dado pessoal, licença ou pagamento é processado aqui.</footer>
+<script>
+(() => {
+  "use strict";
+  const login = document.getElementById('login-screen');
+  const dash = document.getElementById('dashboard-screen');
+  const showDashboard = () => { login.style.display='none'; dash.style.display='block';window.scrollTo({top:0,behavior:'instant'}); };
+  const showLogin = () => { dash.style.display='none'; login.style.display='grid';window.scrollTo({top:0,behavior:'instant'}); };
+  document.getElementById('enter-demo').addEventListener('click',showDashboard);
+  document.getElementById('exit-demo').addEventListener('click',showLogin);
+  const nav = [...document.querySelectorAll('[data-view]')];
+  const views = [...document.querySelectorAll('.view')];
+  const openView = (id) => {
+    nav.forEach(b=>{b.classList.toggle('active',b.dataset.view===id);b.setAttribute('aria-current',b.dataset.view===id?'page':'false')});
+    views.forEach(v=>v.classList.toggle('active',v.id==='view-'+id));
+  };
+  nav.forEach(b=>b.addEventListener('click',()=>openView(b.dataset.view)));
+  document.querySelectorAll('[data-go]').forEach(b=>b.addEventListener('click',()=>openView(b.dataset.go)));
+  document.getElementById('toggle-gold').addEventListener('click',()=>{
+    const next = dash.dataset.gold!=='true';
+    dash.dataset.gold=String(next);
+    document.getElementById('toggle-gold').setAttribute('aria-pressed',String(next));
+    document.getElementById('toggle-gold').textContent=next?'◇ Voltar ao exemplo Anual':'✦ Simular Founder Gold';
+    document.getElementById('overview-plan').classList.toggle('gold-sample',next);
+    document.getElementById('subscription-plan').classList.toggle('gold-sample',next);
+  });
+})();
+</script>
+</body>
+</html>
