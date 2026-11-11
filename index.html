@@ -125,24 +125,45 @@
     .metric-card strong {font-size:16px;color:#e4d9fc;display:block;margin-top:5px;}
     .metric-disclaimer {color:#777087;font-size:10px;margin-top:13px;}
 
-    /* v1.3 / prévia de planos — sem vendas habilitadas */
-    .plan-grid{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:18px;margin-top:38px}
-    .plan{min-width:0;padding:32px;border:1px solid rgba(182,158,250,.18);border-radius:18px;background:linear-gradient(145deg,#181424,#100e19);display:flex;flex-direction:column}
-    .plan.premium{background:radial-gradient(circle at 100% 0,rgba(120,78,230,.17),transparent 60%),linear-gradient(145deg,#221a31,#110f1a);border-color:rgba(176,140,255,.47);box-shadow:0 22px 65px rgba(83,51,162,.10)}
-    .plan-top{display:flex;align-items:center;gap:10px;flex-wrap:wrap;color:#cdb6ff;text-transform:uppercase;letter-spacing:1.2px;font-size:12px;font-weight:800}
+    /* v1.4 — estrutura comercial conceitual e Founder Gold; sem checkout */
+    .plan-grid{display:grid;grid-template-columns:repeat(6,minmax(0,1fr));gap:16px;margin-top:38px}
+    .plan{grid-column:span 2;min-width:0;padding:26px 24px;border:1px solid rgba(182,158,250,.17);border-radius:18px;background:linear-gradient(145deg,#181424,#100e19);display:flex;flex-direction:column;transition:border-color .2s,transform .2s}
+    .plan:nth-child(4),.plan:nth-child(5){grid-column:span 3}
+    .plan:hover{transform:translateY(-3px);border-color:rgba(174,138,254,.42)}
+    .plan.premium{background:radial-gradient(circle at 100% 0,rgba(120,78,230,.18),transparent 60%),linear-gradient(145deg,#221a31,#110f1a);border-color:rgba(176,140,255,.49);box-shadow:0 22px 65px rgba(83,51,162,.12)}
+    .plan-top{display:flex;align-items:center;gap:9px;flex-wrap:wrap;color:#cdb6ff;text-transform:uppercase;letter-spacing:1.1px;font-size:11px;font-weight:800}
     .plan-flag{padding:4px 9px;border:1px solid rgba(168,133,250,.24);background:rgba(151,105,255,.13);border-radius:99px;text-transform:none;letter-spacing:0;color:#e6dfff;font-size:10px;font-weight:700}
-    .plan-price{font-family:"Sora","Plus Jakarta Sans",sans-serif;font-size:clamp(31px,3vw,45px);font-weight:700;color:white;letter-spacing:-1.5px;margin:22px 0 12px;line-height:1.3}
-    .plan-price small{font:600 13px "Plus Jakarta Sans",sans-serif;color:#aaa3be;letter-spacing:0}
-    .plan p{font-size:13px;line-height:1.8;color:#b2adc4;min-height:77px;margin:0 0 18px}
-    .plan ul{list-style:none;padding:20px 0 0;margin:0;border-top:1px solid rgba(191,166,255,.13);display:grid;gap:13px}
-    .plan li{font-size:13px;color:#d3cce5;display:flex;gap:10px;line-height:1.5}
+    .plan-price{font-family:"Sora","Plus Jakarta Sans",sans-serif;font-size:clamp(29px,3vw,40px);font-weight:700;color:white;letter-spacing:-1.5px;margin:22px 0 10px;line-height:1.22}
+    .plan-price small{font:600 12px "Plus Jakarta Sans",sans-serif;color:#aaa3be;letter-spacing:0}
+    .plan p{font-size:12px;line-height:1.75;color:#b2adc4;margin:0 0 17px}
+    .plan ul{list-style:none;padding:16px 0 0;margin:0;border-top:1px solid rgba(191,166,255,.13);display:grid;gap:11px}
+    .plan li{font-size:12px;color:#d3cce5;display:flex;gap:9px;line-height:1.5}
     .plan li:before{content:"✓";color:#a889ff;font-weight:800;flex-shrink:0}
-    .plan-status{margin-top:auto;padding-top:27px;color:#bfaaff;font-size:12px;font-weight:700}
-    .founder{border:1px solid rgba(169,135,245,.23);background:linear-gradient(110deg,rgba(118,78,217,.14),rgba(40,31,64,.34));border-radius:15px;padding:21px 25px;margin-top:20px;display:flex;align-items:center;justify-content:space-between;gap:20px}
-    .founder strong{font-size:14px;color:#e9ddff;display:block;margin-bottom:4px}
-    .founder span{font-size:12px;color:#aaa2c0}
-    .founder b{font-family:"Sora",sans-serif;font-size:24px;white-space:nowrap;color:#d4beff}
-    .plan-note{font-size:12px;line-height:1.8;color:#918ba6;margin:18px 0 0}
+    .plan-status{margin-top:auto;padding-top:23px;color:#bfaaff;font-size:11px;font-weight:700}
+    .founder-gold{position:relative;margin-top:24px;border:1px solid rgba(225,184,101,.42);border-radius:20px;overflow:hidden;display:grid;grid-template-columns:minmax(0,1.15fr) minmax(260px,.85fr);gap:35px;align-items:center;padding:38px;background:radial-gradient(circle at 86% 20%,rgba(215,161,67,.19),transparent 55%),linear-gradient(135deg,#211d20,#131218 55%,#18151a);box-shadow:0 20px 65px rgba(5,4,11,.2)}
+    .founder-gold::before{content:"";position:absolute;pointer-events:none;inset:0;border-top:1px solid rgba(255,235,184,.20)}
+    .founder-kicker{display:inline-flex;align-items:center;gap:9px;color:#f1d397;font-size:11px;font-weight:800;text-transform:uppercase;letter-spacing:1.8px}
+    .founder-kicker .star{font-size:18px;line-height:1;color:#f2d185}
+    .founder-gold h3{font-family:"Sora",sans-serif;font-weight:700;font-size:clamp(28px,3vw,37px);letter-spacing:-1.2px;line-height:1.22;color:#ffedc5;margin:16px 0 12px}
+    .founder-gold p{font-size:13px;line-height:1.8;color:#c6bcb4;margin:0}
+    .gold-points{display:flex;gap:9px;flex-wrap:wrap;margin-top:22px}
+    .gold-points span{border:1px solid rgba(229,187,99,.25);border-radius:9px;background:rgba(194,139,54,.085);padding:8px 10px;color:#efd6a2;font-size:11px;font-weight:700}
+    .founder-price{margin-top:22px;font-size:12px;color:#c6bcb4;line-height:1.7}
+    .founder-price strong{color:#f1d295}
+    .gold-demo{border:1px solid rgba(238,196,119,.35);border-radius:14px;overflow:hidden;box-shadow:0 19px 48px rgba(0,0,0,.27);background:#121013;transform:rotate(1.2deg)}
+    .gold-demo-head{padding:13px 15px;background:linear-gradient(100deg,#332819,#1b1919);display:flex;align-items:center;justify-content:space-between;border-bottom:1px solid rgba(238,195,108,.26);color:#f2d69b;font-size:11px;font-weight:800;letter-spacing:1.1px}
+    .gold-demo-head span:last-child{font-size:9px;color:#d3b274}
+    .gold-demo-nav{display:flex;gap:7px;align-items:center;padding:10px 12px;color:#b5a790;font-size:9px;border-bottom:1px solid rgba(231,185,92,.14)}
+    .gold-demo-nav strong{padding:5px 8px;border:1px solid rgba(220,166,74,.31);border-radius:5px;background:#382a1b;color:#efce92}
+    .gold-demo-content{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:8px;padding:12px}
+    .gold-demo-panel{min-height:76px;border:1px solid rgba(202,158,82,.29);border-radius:8px;padding:9px;background:radial-gradient(circle at 70% 110%,rgba(182,136,61,.10),transparent 80%),#191619}
+    .gold-demo-panel small{display:flex;align-items:center;justify-content:space-between;font-size:9px;color:#f0d29d;font-weight:700}
+    .gold-demo-panel small i{height:5px;width:5px;border-radius:100%;background:#e1b868;box-shadow:0 0 8px rgba(221,172,74,.6)}
+    .gold-demo-panel .spark{margin:11px auto 0;text-align:center;color:#a38b66;font-size:17px}
+    .gold-demo-foot{display:flex;align-items:center;justify-content:space-between;border-top:1px solid rgba(231,185,92,.14);color:#a89377;padding:9px 12px;font-size:9px}
+    .gold-demo-foot b{color:#f0d29d}
+    .gold-demo-label{color:#9c8b78;font-size:10px;text-align:center;margin-top:12px}
+    .plan-note{font-size:12px;line-height:1.8;color:#928ca9;margin:18px 0 0}
     .steps {display:grid;grid-template-columns:repeat(3,1fr);gap:18px;margin-top:38px;}
     .step {padding:30px 27px;border-radius:17px;border:1px solid var(--line);background:linear-gradient(155deg,#171325,#0d0c16);position:relative;}
     .step .step-num {font-size:13px;color:#a88bfb;letter-spacing:1px;font-weight:800;}
@@ -179,6 +200,12 @@
       .showcase {gap:30px;}
       .last-cta {padding:40px;}
     }
+    @media (min-width:701px) and (max-width:1050px) {
+      .plan-grid{grid-template-columns:repeat(2,minmax(0,1fr))}
+      .plan,.plan:nth-child(4){grid-column:auto}
+      .plan:nth-child(5){grid-column:span 2}
+      .founder-gold{gap:20px;padding:27px}
+    }
     @media (max-width:700px) {
       .container {width:min(100% - 32px,1180px);}
       .nav {min-height:66px;gap:12px;}
@@ -211,9 +238,9 @@
       .showcase {grid-template-columns:1fr;gap:30px;}
       .steps {grid-template-columns:1fr;gap:11px;}
       .plan-grid{grid-template-columns:1fr;gap:14px}
-      .plan{padding:25px 22px}
-      .plan p{min-height:0}
-      .founder{flex-direction:column;align-items:flex-start;gap:9px}
+      .plan,.plan:nth-child(4),.plan:nth-child(5){grid-column:auto;padding:25px 22px}
+      .founder-gold{grid-template-columns:1fr;padding:25px 20px;gap:27px}
+      .gold-demo{transform:none}
       .last-cta {padding:34px 25px;flex-direction:column;align-items:stretch;}
       .last-cta h2 {font-size:35px;}
       .footer-grid {display:block;}
@@ -305,16 +332,72 @@
       </div>
     </section>
 
-    <section class="section" id="planos">
+
+    <section class="section" id="planos" aria-labelledby="planos-titulo">
       <div class="container">
         <span class="section-label">04 / Planos e licenças</span>
-        <div class="heading"><h2>Escolha seu ritmo.<br><span class="grad">O controle é seu.</span></h2><p class="section-desc">Duas possibilidades em estudo para acessar o ORBIT. Esta é uma prévia dos valores planejados, não uma oferta de venda ativa.</p></div>
+        <div class="heading"><h2 id="planos-titulo">Um plano para cada jornada.<br><span class="grad">Seu ritmo. Seu ORBIT.</span></h2><p class="section-desc">Acesso completo aos recursos principais em todos os períodos. Escolha a duração que combina com você. Valores em estudo para um lançamento futuro.</p></div>
         <div class="plan-grid">
-          <article class="plan"><div class="plan-top">ORBIT Mensal <span class="plan-flag">Em planejamento</span></div><div class="plan-price">R$ 9,90 <small>/ mês</small></div><p>Flexibilidade para utilizar o aplicativo durante o período contratado, com atualizações enquanto a assinatura estiver ativa.</p><ul><li>Até 4 painéis por guia</li><li>Recursos principais do ORBIT</li><li>Renovação mensal prevista, sem fidelidade</li></ul><div class="plan-status">Disponibilidade: em preparação</div></article>
-          <article class="plan premium"><div class="plan-top">ORBIT Definitivo <span class="plan-flag">Compra única proposta</span></div><div class="plan-price">R$ 49,90 <small>/ pagamento único</small></div><p>Uso permanente da versão principal v3 adquirida, sem mensalidades. Futuras versões principais poderão ter condições próprias.</p><ul><li>Até 4 painéis por guia</li><li>Recursos principais da versão v3</li><li>Correções de manutenção da v3 previstas</li></ul><div class="plan-status">Disponibilidade: em preparação</div></article>
+          <article class="plan">
+            <div class="plan-top">ORBIT Semanal <span class="plan-flag">7 dias</span></div>
+            <div class="plan-price">R$ 9,90</div>
+            <p>Uma semana de acesso. Ideal para conhecer o aplicativo com flexibilidade.</p>
+            <ul><li>Até 4 painéis por guia</li><li>Todos os recursos principais</li><li>Sem compromisso de longo prazo</li></ul>
+            <div class="plan-status">Plano em preparação</div>
+          </article>
+          <article class="plan">
+            <div class="plan-top">ORBIT Mensal <span class="plan-flag">1 mês</span></div>
+            <div class="plan-price">R$ 29,90</div>
+            <p>Seu espaço de trabalho por um mês, com os mesmos recursos completos.</p>
+            <ul><li>Até 4 painéis por guia</li><li>Todos os recursos principais</li><li>Renovação flexível</li></ul>
+            <div class="plan-status">Plano em preparação</div>
+          </article>
+          <article class="plan">
+            <div class="plan-top">ORBIT Trimestral <span class="plan-flag">3 meses</span></div>
+            <div class="plan-price">R$ 79,90</div>
+            <p>Três meses de acesso para quem já sabe o que quer e busca economia.</p>
+            <ul><li>Até 4 painéis por guia</li><li>Todos os recursos principais</li><li>Economia de cerca de 11% vs. mensal</li></ul>
+            <div class="plan-status">Plano em preparação</div>
+          </article>
+          <article class="plan">
+            <div class="plan-top">ORBIT Semestral <span class="plan-flag">6 meses</span></div>
+            <div class="plan-price">R$ 149,90</div>
+            <p>Meio ano de organização, com custo reduzido para quem utiliza com frequência.</p>
+            <ul><li>Até 4 painéis por guia</li><li>Todos os recursos principais</li><li>Economia de cerca de 16% vs. mensal</li></ul>
+            <div class="plan-status">Plano em preparação</div>
+          </article>
+          <article class="plan premium">
+            <div class="plan-top">ORBIT Anual <span class="plan-flag">Melhor economia · 12 meses</span></div>
+            <div class="plan-price">R$ 249,90</div>
+            <p>Doze meses de acesso, com a maior economia da tabela. A base da futura edição limitada Founder Gold.</p>
+            <ul><li>Até 4 painéis por guia</li><li>Todos os recursos principais</li><li>Economia de cerca de 30% vs. mensal</li></ul>
+            <div class="plan-status">Plano em preparação</div>
+          </article>
         </div>
-        <div class="founder"><div><strong>Edição Fundador — ideia de lançamento</strong><span>Preço especial estudado para os 10 primeiros compradores da licença definitiva v3, sujeito à confirmação.</span></div><b>R$ 29,90</b></div>
-        <p class="plan-note">Preços e condições sujeitos a mudanças antes do lançamento. Ainda não há compra, assinatura ou ativação de licença disponível neste site. O download continua pelo canal oficial de distribuição.</p>
+        <aside class="founder-gold" aria-label="Conceito Founder Gold">
+          <div>
+            <div class="founder-kicker"><span class="star" aria-hidden="true">✦</span> Edição limitada · 10 licenças previstas</div>
+            <h3>Founder Gold.<br>Os primeiros deixam sua marca.</h3>
+            <p>Na proposta de lançamento, os <strong>10 primeiros clientes com compra confirmada do plano anual</strong> receberão uma licença de acesso <strong>vitalício ao IdleHub ORBIT</strong>, além de um <strong>tema dourado exclusivo</strong> e um selo visual Founder para reconhecer quem acreditou no projeto desde o começo.</p>
+            <div class="gold-points"><span>✦ Acesso vitalício</span><span>✦ Tema Gold exclusivo</span><span>✦ Selo Founder</span></div>
+            <div class="founder-price">Pelo valor previsto do plano anual: <strong>R$ 249,90</strong> · Sem taxa adicional prevista. Oferta ainda não disponível.</div>
+          </div>
+          <div>
+            <div class="gold-demo" role="img" aria-label="Prévia conceitual do tema dourado Founder Gold do aplicativo: controles escuros e detalhes em ouro suave, quatro painéis de contas e selo Founder">
+              <div class="gold-demo-head"><span>✦ IDLEHUB ORBIT</span><span>FOUNDER GOLD</span></div>
+              <div class="gold-demo-nav"><strong>PRINCIPAL</strong><span>4 painéis ativos</span></div>
+              <div class="gold-demo-content">
+                <div class="gold-demo-panel"><small>Conta 1 <i></i></small><div class="spark">◇</div></div>
+                <div class="gold-demo-panel"><small>Conta 2 <i></i></small><div class="spark">✧</div></div>
+                <div class="gold-demo-panel"><small>Conta 3 <i></i></small><div class="spark">◇</div></div>
+                <div class="gold-demo-panel"><small>Conta 4 <i></i></small><div class="spark">✧</div></div>
+              </div>
+              <div class="gold-demo-foot"><span>ORBIT · Founder Edition</span><b>✦ GOLD</b></div>
+            </div>
+            <div class="gold-demo-label">Conceito visual · O tema dourado ainda não existe no aplicativo</div>
+          </div>
+        </aside>
+        <p class="plan-note">Prévia comercial apenas para planejamento. Não é possível comprar, reservar vagas ou ativar assinaturas neste site. Os termos de vitaliciedade, cobertura de versões, suporte e elegibilidade da Founder Gold serão definidos antes da abertura das vendas. Nenhuma vaga é contabilizada nesta fase.</p>
       </div>
     </section>
     <section class="section" id="instalacao">
@@ -330,7 +413,8 @@
           <details><summary>Preciso entrar na conta toda vez?</summary><p>O IdleHub utiliza sessões persistentes para ajudar a manter logins. Alguns sites podem exigir autenticação novamente por suas próprias políticas ou por motivos de segurança.</p></details>
           <details><summary>Como recebo atualizações?</summary><p>O inicializador verifica a disponibilidade de novas versões. Quando necessário, o aplicativo orienta a atualização antes de iniciar.</p></details>
           <details><summary>O botão Otimizar RAM reduz o uso de memória?</summary><p>Ele limpa o cache HTTP descartável do painel, sem apagar cookies ou logins. Isso não garante redução imediata do consumo de memória.</p></details>
-          <details><summary>Os planos já estão disponíveis para compra?</summary><p>Ainda não. Os valores são uma proposta em análise, e o sistema comercial de cobrança e licenciamento ainda não foi disponibilizado.</p></details>
+          <details><summary>Os planos já estão disponíveis para compra?</summary><p>Ainda não. Os cinco planos e a edição Founder Gold são propostas em planejamento. Não aceitamos pagamentos nem reservas de vagas pelo site neste momento.</p></details>
+          <details><summary>Como funcionará a Founder Gold?</summary><p>A proposta é conceder acesso vitalício ao IdleHub ORBIT, um tema dourado exclusivo e um selo de fundador aos 10 primeiros clientes que comprarem o plano anual quando as vendas forem oficialmente abertas. As regras completas serão publicadas antes do lançamento.</p></details>
           <details><summary>Onde posso encontrar a versão mais recente?</summary><p>No repositório público oficial de distribuição: <a style="color:#bfa6ff;text-decoration:underline" href="https://github.com/CaduCalegari/IdleHub-Releases/releases/latest" target="_blank" rel="noopener noreferrer">GitHub Releases do IdleHub</a>.</p></details>
         </div>
       </div>
