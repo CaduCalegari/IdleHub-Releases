@@ -1,0 +1,47 @@
+name: ORBIT Website Preview — Pages (custom)
+on:
+  push:
+    branches:
+      - website-preview
+    paths:
+      - index.html
+      - minha-area.html
+      - .github/workflows/pages-preview.yml
+  workflow_dispatch:
+
+permissions:
+  contents: read
+  pages: write
+  id-token: write
+
+concurrency:
+  group: orbit-site-preview
+  cancel-in-progress: true
+
+jobs:
+  deploy-preview:
+    runs-on: ubuntu-latest
+    timeout-minutes: 10
+    environment:
+      name: github-pages
+      url: ${{ steps.deployment.outputs.page_url }}
+    steps:
+      - name: Checkout preview branch
+        uses: actions/checkout@v4
+      - name: Prepare static website only
+        run: |
+          mkdir -p _site
+          cp index.html minha-area.html _site/
+          touch _site/.nojekyll
+          test -s _site/index.html
+          test -s _site/minha-area.html
+          grep -q 'id="hero-showcase"' _site/index.html
+      - name: Configure Pages
+        uses: actions/configure-pages@v5
+      - name: Upload clean Pages artifact
+        uses: actions/upload-pages-artifact@v4
+        with:
+          path: _site
+      - name: Publish preview
+        id: deployment
+        uses: actions/deploy-pages@v4
