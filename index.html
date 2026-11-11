@@ -111,22 +111,32 @@
     .showcase-dot{border:0;padding:0;cursor:pointer;width:8px;height:8px;border-radius:12px;background:#635678;transition:width .22s,background .22s}
     .showcase-dot[aria-selected="true"]{width:22px;background:#b69bff}
     .showcase-arrow:focus-visible,.showcase-dot:focus-visible{outline:2px solid #dac4ff;outline-offset:3px}
-    .diag-preview .app-nav{justify-content:flex-start}
-    .diag-body{padding:14px}
-    .diag-header{display:flex;align-items:center;justify-content:space-between;gap:7px;margin-bottom:15px;font-size:12px;font-weight:800}
-    .diag-header small{font-size:9px;color:#bcace0;border:1px solid #5a4776;background:#2b213c;border-radius:99px;padding:5px 8px}
-    .diag-tiles{display:grid;grid-template-columns:1fr 1fr;gap:9px;margin-bottom:13px}
-    .diag-tile{padding:13px;border-radius:9px;background:#191525;border:1px solid #352a45}
-    .diag-tile small{display:block;font-size:9px;color:#a99ec0}
-    .diag-tile strong{display:block;font:700 18px "Sora",sans-serif;color:#ece2ff;margin:6px 0}
-    .diag-tile em{font-size:9px;font-style:normal;color:#897e9e}
-    .diag-panel{padding:12px;background:#171320;border:1px solid #342941;border-radius:9px;margin-top:9px}
-    .diag-panel-label{display:flex;justify-content:space-between;font-size:10px;color:#c9bcdf}
-    .diag-panel-label small{font-size:9px;color:#8b7d9c}
-    .diag-bars{height:66px;display:flex;align-items:flex-end;gap:5px;margin-top:10px}
-    .diag-bars i{height:var(--h);flex:1;display:block;background:linear-gradient(0deg,#47306c,#b490f9);border-radius:4px 4px 0 0}
-    .diag-panel.cpu .diag-bars i{background:linear-gradient(0deg,#31516e,#83c1ea)}
-    .diag-bottom{padding:10px 14px;font-size:9px;color:#83778f;border-top:1px solid #2d2538}
+
+    /* Benchmark do carrossel: valores de teste, não mockup ou diagnóstico em tempo real. */
+    .hero-bench-window{display:flex;flex-direction:column;background:linear-gradient(150deg,#151221,#0c0b14)!important}
+    .hero-bench-window .app-nav{gap:10px}
+    .hero-bench-window .app-status{white-space:nowrap;color:#b3a4cd}
+    .hero-bench-body{flex:1;display:flex;flex-direction:column;padding:19px 18px 16px}
+    .hero-bench-kicker{color:#ab94e9;font-size:9px;font-weight:800;letter-spacing:1.6px;text-transform:uppercase}
+    .hero-bench-top{display:flex;justify-content:space-between;align-items:start;gap:12px;margin:6px 0 15px}
+    .hero-bench-top h3{margin:0;font:700 18px/1.35 "Sora",sans-serif;color:#f3ecff;max-width:275px;letter-spacing:-.65px}
+    .hero-bench-proof{flex-shrink:0;color:#abf1cb;font-size:9px;font-weight:800;padding:6px 8px;border-radius:8px;background:rgba(80,178,132,.08);border:1px solid rgba(120,220,174,.29)}
+    .hero-bench-highlight{display:flex;align-items:center;justify-content:space-between;gap:12px;margin-bottom:15px;padding:12px 15px;border-radius:11px;border:1px solid rgba(179,139,255,.29);background:linear-gradient(115deg,rgba(129,83,239,.24),rgba(107,79,160,.07))}
+    .hero-bench-highlight small{display:block;color:#c4b6dd;font-size:9px;font-weight:800}
+    .hero-bench-highlight strong{display:block;margin-top:3px;font:800 30px/1.1 "Sora",sans-serif;letter-spacing:-1.3px;color:#e5d5ff}
+    .hero-bench-highlight span{color:#a799bf;font-size:9px;line-height:1.6;text-align:right;max-width:155px}
+    .hero-bench-rows{display:grid;gap:12px}
+    .hero-bench-row-label{display:flex;justify-content:space-between;align-items:baseline;gap:10px;font-size:10px;margin-bottom:5px}
+    .hero-bench-row-label b{font-weight:800;color:#d5cbe7}
+    .hero-bench-row-label span{font:700 11px "Sora",sans-serif;color:#c5b9d9;font-variant-numeric:tabular-nums}
+    .hero-bench-track{height:9px;background:#2b243b;border-radius:20px;overflow:hidden}
+    .hero-bench-fill{display:block;width:var(--hero-bench-width);height:100%;border-radius:20px;background:linear-gradient(90deg,#625583,#af95e1)}
+    .hero-bench-row.orbit .hero-bench-row-label b,.hero-bench-row.orbit .hero-bench-row-label span{color:#c9aaff}
+    .hero-bench-row.orbit .hero-bench-fill{background:linear-gradient(90deg,#7853ef,#c6a7ff)}
+    .hero-bench-foot{margin-top:auto;padding-top:11px;border-top:1px solid rgba(177,151,215,.17);display:flex;justify-content:space-between;align-items:center;gap:10px}
+    .hero-bench-foot small{color:#a699b8;font-size:9px;line-height:1.5;max-width:260px}
+    .hero-bench-foot a{color:#dccbff;font-size:10px;font-weight:800;white-space:nowrap;text-decoration:underline;text-underline-offset:3px}
+    @media(max-width:700px){.hero-bench-body{padding:13px 11px 12px}.hero-bench-top h3{font-size:15px}.hero-bench-proof{font-size:8px;padding:5px 6px}.hero-bench-highlight{padding:10px 11px;margin-bottom:13px}.hero-bench-highlight strong{font-size:25px}.hero-bench-row-label{font-size:9px}.hero-bench-row-label span{font-size:10px}.hero-bench-rows{gap:9px}.hero-bench-foot small{font-size:8px}.hero-bench-foot a{font-size:9px}}
     .gold-window{border-color:rgba(232,190,107,.48)!important;background:#13110e!important;box-shadow:0 28px 85px rgba(42,23,4,.43),0 0 36px rgba(190,131,43,.13)!important}
     .gold-window .app-head{background:linear-gradient(90deg,#342817,#1d1812);border-color:#574025}
     .gold-window .app-icon{background:#5c4123;color:#f7d496}
@@ -147,7 +157,7 @@
     .gold-window .app-bottombar{color:#b49a75}
     .gold-window .app-bottombar .val{color:#f3d597}
     @media(max-width:1000px){.showcase-slide .app-window{transform:none}}
-    @media(max-width:700px){.showcase-slide .app-window{min-height:0}.showcase-controls{align-items:flex-start}.showcase-description{max-width:55%}.showcase-description strong{font-size:11px}.showcase-description span{font-size:9px}.showcase-arrow{width:30px;height:30px}.diag-body{padding:9px}.diag-tile{padding:9px}.diag-tile strong{font-size:14px}.diag-bars{height:42px}.diag-panel{padding:8px}}
+    @media(max-width:700px){.showcase-slide .app-window{min-height:0}.showcase-controls{align-items:flex-start}.showcase-description{max-width:55%}.showcase-description strong{font-size:11px}.showcase-description span{font-size:9px}.showcase-arrow{width:30px;height:30px}}
     @media(prefers-reduced-motion:reduce){.showcase-slide,.showcase-dot{transition:none!important}}
 
     section.section { padding:100px 0; border-top:1px solid rgba(182,158,250,.07); }
@@ -406,18 +416,25 @@
             </div>
             <div class="app-bottombar"><span>ORBIT · Prévia ilustrativa</span><span><span class="val">4</span> painéis configurados</span></div>
           </div></div>
-              <div class="showcase-slide" id="hero-slide-2" role="group" aria-roledescription="slide" aria-label="2 de 3: Diagnóstico" aria-hidden="true" inert>
-<div class="app-window diag-preview" role="img" aria-label="Painel de diagnóstico ilustrativo, sem medições reais">
-  <div class="app-head"><span class="app-icon">◇</span><span class="app-name">IdleHub <span>ORBIT</span></span><span class="app-winctrl">— □ ×</span></div>
-  <div class="app-nav"><div class="app-tabs"><span class="app-tab active">◈ &nbsp; Diagnóstico</span><span class="app-tab">Histórico</span></div></div>
-  <div class="diag-body">
-    <div class="diag-header"><strong>Diagnóstico por painel</strong><small>● Prévia visual</small></div>
-    <div class="diag-tiles"><div class="diag-tile"><small>Memória</small><strong>Por painel</strong><em>Visibilidade local</em></div><div class="diag-tile"><small>Histórico</small><strong>24 horas</strong><em>Informações ilustrativas</em></div></div>
-    <div class="diag-panel"><div class="diag-panel-label"><span>Memória · amostra visual</span><small>Histórico</small></div><div class="diag-bars" aria-hidden="true"><i style="--h:40%"></i><i style="--h:56%"></i><i style="--h:49%"></i><i style="--h:64%"></i><i style="--h:54%"></i><i style="--h:71%"></i><i style="--h:62%"></i><i style="--h:76%"></i><i style="--h:58%"></i><i style="--h:69%"></i><i style="--h:53%"></i><i style="--h:67%"></i><i style="--h:59%"></i><i style="--h:73%"></i></div></div>
-    <div class="diag-panel cpu"><div class="diag-panel-label"><span>CPU · amostra visual</span><small>Histórico</small></div><div class="diag-bars" aria-hidden="true"><i style="--h:29%"></i><i style="--h:43%"></i><i style="--h:34%"></i><i style="--h:56%"></i><i style="--h:32%"></i><i style="--h:52%"></i><i style="--h:44%"></i><i style="--h:68%"></i><i style="--h:39%"></i><i style="--h:57%"></i><i style="--h:47%"></i><i style="--h:62%"></i><i style="--h:40%"></i><i style="--h:54%"></i></div></div>
-  </div>
-  <div class="diag-bottom">Gráficos fictícios · Não representam valores reais</div>
-</div></div>
+
+              <div class="showcase-slide" id="hero-slide-2" role="group" aria-roledescription="slide" aria-label="2 de 3: Benchmark de memória" aria-hidden="true" inert>
+                <div class="app-window hero-bench-window">
+                  <div class="app-head"><span class="app-icon">◇</span><span class="app-name">IdleHub <span>ORBIT</span></span><span class="app-winctrl">— □ ×</span></div>
+                  <div class="app-nav"><div class="app-tabs"><span class="app-tab active">◈ &nbsp; Benchmark</span></div><span class="app-status">Windows · 4 sessões</span></div>
+                  <div class="hero-bench-body">
+                    <span class="hero-bench-kicker">Resultado do laboratório · 11.11.2026</span>
+                    <div class="hero-bench-top"><h3>Quatro sessões.<br>Os números falam.</h3><span class="hero-bench-proof">● TESTE REAL</span></div>
+                    <div class="hero-bench-highlight"><div><small>ORBIT vs. Opera GX</small><strong>−82,9%</strong></div><span>Memória privada comprometida no teste sintético</span></div>
+                    <div class="hero-bench-rows" aria-label="Memória privada comprometida medida no teste Windows, em MiB">
+                      <div class="hero-bench-row"><div class="hero-bench-row-label"><b>Opera GX</b><span>1.603,5 MiB</span></div><div class="hero-bench-track"><span class="hero-bench-fill" style="--hero-bench-width:100%" aria-hidden="true"></span></div></div>
+                      <div class="hero-bench-row"><div class="hero-bench-row-label"><b>Chrome</b><span>852,0 MiB</span></div><div class="hero-bench-track"><span class="hero-bench-fill" style="--hero-bench-width:53.13%" aria-hidden="true"></span></div></div>
+                      <div class="hero-bench-row"><div class="hero-bench-row-label"><b>Brave</b><span>674,4 MiB</span></div><div class="hero-bench-track"><span class="hero-bench-fill" style="--hero-bench-width:42.06%" aria-hidden="true"></span></div></div>
+                      <div class="hero-bench-row orbit"><div class="hero-bench-row-label"><b>✦ IdleHub ORBIT</b><span>274,4 MiB</span></div><div class="hero-bench-track"><span class="hero-bench-fill" style="--hero-bench-width:17.11%" aria-hidden="true"></span></div></div>
+                    </div>
+                    <div class="hero-bench-foot"><small>Mediana de 5 amostras · Navegadores headless, ORBIT Electron. Não é RAM física total.</small><a href="#benchmark">Ver metodologia ↗</a></div>
+                  </div>
+                </div>
+              </div>
               <div class="showcase-slide" id="hero-slide-3" role="group" aria-roledescription="slide" aria-label="3 de 3: Founder Gold" aria-hidden="true" inert><div class="app-window gold-window" role="img" aria-label="Ilustração conceitual de quatro painéis na edição Founder Gold">
             <div class="app-head"><span class="app-icon">◇</span><span class="app-name">IdleHub <span>ORBIT</span></span><span class="app-winctrl">— □ ×</span></div>
             <div class="app-nav"><div class="app-tabs"><span class="app-tab active">◈ &nbsp; Principal</span><span class="app-tab">＋ Nova guia</span></div><span class="app-status"><i></i> Founder Gold · Visual ilustrativo</span></div>
@@ -437,14 +454,14 @@
                 <button class="showcase-arrow" type="button" id="showcase-prev" aria-label="Slide anterior">‹</button>
                 <div class="showcase-dots" role="tablist" aria-label="Escolha uma prévia">
                   <button class="showcase-dot" type="button" role="tab" aria-controls="hero-slide-1" aria-label="Painéis" aria-selected="true" tabindex="0"></button>
-                  <button class="showcase-dot" type="button" role="tab" aria-controls="hero-slide-2" aria-label="Diagnóstico" aria-selected="false" tabindex="-1"></button>
+                  <button class="showcase-dot" type="button" role="tab" aria-controls="hero-slide-2" aria-label="Benchmark" aria-selected="false" tabindex="-1"></button>
                   <button class="showcase-dot" type="button" role="tab" aria-controls="hero-slide-3" aria-label="Founder Gold" aria-selected="false" tabindex="-1"></button>
                 </div>
                 <button class="showcase-arrow" type="button" id="showcase-next" aria-label="Próximo slide">›</button>
               </div>
             </div>
           </div>
-          <p class="mock-caption">Prévias conceituais · Não são capturas reais do aplicativo</p>
+          <p class="mock-caption">Painéis e Founder Gold são conceitos visuais · Benchmark medido em laboratório</p>
         </div>
       </div>
     </section>
@@ -659,7 +676,7 @@
         const description = document.getElementById('showcase-description');
         const labels = [
           ['Seus quatro painéis, em um só lugar.', 'Organize sessões independentes com praticidade.'],
-          ['Entenda seu desempenho.', 'Diagnóstico de CPU e RAM em uma prévia ilustrativa.'],
+          ['Benchmark com dados reais.', 'ORBIT × Opera GX, Chrome e Brave: memória privada em teste sintético.'],
           ['Um visual para fundadores.', 'Founder Gold: conceito do tema dourado exclusivo.']
         ];
         let index = 0, paused = false, manual = false, touchX = null;
